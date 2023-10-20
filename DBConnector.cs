@@ -69,36 +69,7 @@ namespace LoginInterface
             }
         }
 
-        public void SendEmail(string targetEmail)
-        {
-            string senderEmail = "ThisIsForMyUniProject@gmail.com";
-
-            using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com"))
-            {
-                smtpClient.Port = 587;
-                smtpClient.Credentials = new NetworkCredential(senderEmail, Properties.Settings.Default.EmailAppPassword);
-                smtpClient.EnableSsl = true;
-
-                using (MailMessage mail = new MailMessage())
-                {
-                    mail.From = new MailAddress(senderEmail);
-                    mail.To.Add(targetEmail);
-                    mail.Subject = "Testing123";
-                    mail.Body = "Hello World!";
-
-                    try
-                    {
-                        smtpClient.Send(mail);
-                        MessageBox.Show("Sent bitch");
-                    }
-                    catch
-                    {
-                        MessageBox.Show($"Failed to send email: {senderEmail}");
-                    }
-
-                }
-            }
-        }
+        
     }
 }
 

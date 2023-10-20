@@ -18,22 +18,49 @@ namespace LoginInterface
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void PasswordLabel_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void PasswordBox_TextChanged(object sender, EventArgs e)
         {
-            string testEmail = "harygiddens@gmail.com";
-            DbConnector dbConnector = DbConnector.GetInstanceOfDBConnector();
-            dbConnector.CheckEmail(testEmail);
-            dbConnector.SendEmail("hg419@student.aru.ac.uk");
+
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void UsernameBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void CreateAccount_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new AccountCreation().Show();
+        }
+
+        private void EmailLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoginButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                // Ensure that the form is being closed by the user (not programmatically).
+                Application.Exit();
+            }
         }
     }  
 }
