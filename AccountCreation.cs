@@ -36,5 +36,15 @@ namespace LoginInterface
                 Application.Exit();
             }
         }
+
+        private void CreateButton_Click(object sender, EventArgs e)
+        {
+            UserRegistrationManager userRegistrationManager = new UserRegistrationManager();
+            string regCode = userRegistrationManager.GenerateRegistrationCode();
+            userRegistrationManager.SendRegistrationCodeEmail("hg419@student.aru.ac.uk", regCode);
+            this.Hide();
+            new RegistrationCodeForm(regCode).Show();
+
+        }
     }
 }
