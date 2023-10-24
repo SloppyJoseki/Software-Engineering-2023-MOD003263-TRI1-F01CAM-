@@ -15,6 +15,7 @@ namespace LoginInterface
         public AccountCreation()
         {
             InitializeComponent();
+            CreateButton.Enabled = false;
         }
 
         private void EmailLabel_Click(object sender, EventArgs e)
@@ -41,15 +42,37 @@ namespace LoginInterface
         {
             UserRegistrationManager userRegistrationManager = new UserRegistrationManager();
             string regCode = userRegistrationManager.GenerateRegistrationCode();
-            userRegistrationManager.SendRegistrationCodeEmail("hg419@student.aru.ac.uk", regCode);
+            userRegistrationManager.SendRegistrationCodeEmail(EmailBox.Text, regCode);
             this.Hide();
-            new RegistrationCodeForm(regCode).Show();
+            new RegistrationCodeForm(regCode, EmailBox.Text, PasswordBox.Text).Show();
 
         }
 
         private void AccountCreation_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void EmailBox_TextChanged(object sender, EventArgs e)
+        {
+            CreateButtonControl();
+        }
+
+        private void PasswordBox_TextChanged(object sender, EventArgs e)
+        {
+            CreateButtonControl();
+        }
+
+        public void CreateButtonControl()
+        {
+            if (!string.IsNullOrEmpty(EmailBox.Text) && !string.IsNullOrEmpty(PasswordBox.Text))
+            {
+                CreateButton.Enabled = true;
+            }
+            else 
+            {
+                CreateButton.Enabled = false;
+            }
         }
     }
 }

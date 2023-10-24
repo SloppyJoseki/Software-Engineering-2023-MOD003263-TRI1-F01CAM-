@@ -42,6 +42,7 @@
             this.EmailBox.Name = "EmailBox";
             this.EmailBox.Size = new System.Drawing.Size(182, 22);
             this.EmailBox.TabIndex = 0;
+            this.EmailBox.TextChanged += new System.EventHandler(this.EmailBox_TextChanged);
             // 
             // PasswordBox
             // 
@@ -49,6 +50,7 @@
             this.PasswordBox.Name = "PasswordBox";
             this.PasswordBox.Size = new System.Drawing.Size(182, 22);
             this.PasswordBox.TabIndex = 1;
+            this.PasswordBox.TextChanged += new System.EventHandler(this.PasswordBox_TextChanged);
             // 
             // EmailLabel
             // 

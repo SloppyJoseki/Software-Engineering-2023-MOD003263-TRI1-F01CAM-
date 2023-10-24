@@ -83,6 +83,7 @@
             this.Name = "RegistrationCodeForm";
             this.Text = "RegistrationCodeForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RegistrationCodeForm_FormClosing);
+            this.Load += new System.EventHandler(this.RegistrationCodeForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

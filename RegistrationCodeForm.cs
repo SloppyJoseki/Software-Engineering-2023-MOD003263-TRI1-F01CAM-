@@ -13,10 +13,14 @@ namespace LoginInterface
     public partial class RegistrationCodeForm : Form
     {
         string regCode;
-        public RegistrationCodeForm(string regCode)
+        string email;
+        string password;
+        public RegistrationCodeForm(string regCode, string email, string password)
         {
             InitializeComponent();
             this.regCode = regCode;
+            this.email = email;
+            this.password = password;
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -44,12 +48,17 @@ namespace LoginInterface
                 return;
             }
 
-            DbConnector.GetInstanceOfDBConnector().AddUserToDB("hg419@student.aru.ac.uk", "frog11");
+            DbConnector.GetInstanceOfDBConnector().AddUserToDB(email, password);
             this.Hide();
             new LoginForm().Show();
         }
 
         private void RegCodeBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void RegistrationCodeForm_Load(object sender, EventArgs e)
         {
 
         }
