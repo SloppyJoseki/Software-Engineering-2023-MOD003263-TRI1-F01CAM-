@@ -46,5 +46,10 @@ namespace LoginInterface
             new RegistrationCodeForm(regCode).Show();
 
         }
+
+        private void AccountCreation_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -40,12 +40,13 @@ namespace LoginInterface
 
             if (userCode != regCode)
             {
-                MessageBox.Show("Fucking Moron");
+                MessageBox.Show("Please try again");
+                return;
             }
-            else if (userCode == regCode)
-            {
-                MessageBox.Show("Well done");
-            }
+
+            DbConnector.GetInstanceOfDBConnector().AddUserToDB("hg419@student.aru.ac.uk", "frog11");
+            this.Hide();
+            new LoginForm().Show();
         }
 
         private void RegCodeBox_TextChanged(object sender, EventArgs e)

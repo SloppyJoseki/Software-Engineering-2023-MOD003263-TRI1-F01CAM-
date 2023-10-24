@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Security.Cryptography;
 
 namespace LoginInterface
 {
@@ -47,11 +48,22 @@ namespace LoginInterface
                 }
             }
         }
-        public void RegisterUser(string username, string password)
-        {
-            string authCode = GenerateRegistrationCode();
-            SendRegistrationCodeEmail(username, authCode);
 
+        public byte[] GenerateSalt(int length)
+        {
+            using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
+            {
+                byte[] salt = new byte[length];
+                rng.GetBytes(salt);
+                return salt;
+            }
+        }
+        public byte[] HashPassword(string password, byte[] salt)
+        {
+            using (Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(password, salt, 1000))
+            {
+                return pbkdf2.GetBytes(32);
+            }
         }
     }
 }

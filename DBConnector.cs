@@ -69,7 +69,34 @@ namespace LoginInterface
             }
         }
 
-        
+        public void AddUserToDB(string username, string password)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            UserRegistrationManager userRegistrationManager = new UserRegistrationManager();
+            byte[] userSalt = userRegistrationManager.GenerateSalt(16);
+            byte[] securePassword = userRegistrationManager.HashPassword(password, userSalt);
+
+            try
+            {
+                connection.Open();
+                string userInsertQuery = "INSERT INTO UserData (Email, Password, Salt) VALUES (@username, @password, @userSalt)";
+
+                using (SqlCommand sqlCommand = new SqlCommand(userInsertQuery, connection))
+                {
+                    sqlCommand.Parameters.Add(new SqlParameter("@username", username));
+                    sqlCommand.Parameters.Add(new SqlParameter("@password", securePassword));
+                    sqlCommand.Parameters.Add(new SqlParameter("@userSalt", userSalt));
+                    sqlCommand.ExecuteNonQuery();
+                    MessageBox.Show("Task failed successfully");
+                    connection.Close();
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
     }
 }
 
