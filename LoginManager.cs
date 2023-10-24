@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace LoginInterface
 {
-    internal class FunctionsInnit
+    internal class LoginManager
     {
-        
+       
     }
 }

@@ -34,15 +34,16 @@ namespace LoginInterface
             return _instance;
         }
 
-        public void CheckEmail(string email)
+        public byte[] CheckEmailGetSalt(string email)
         {
+            byte[] userSalt = null;
             SqlConnection connection = new SqlConnection(connectionString);
             try
             {
-                
                 connection.Open();
 
-                String emailQuery = "SELECT 1 FROM UserData WHERE Email COLLATE Latin1_General_CS_AS = @Email";
+                String emailQuery = "SELECT Salt FROM UserData WHERE Email COLLATE Latin1_General_CS_AS = @Email";
+
 
                 using (SqlCommand sqlCommand = new SqlCommand(emailQuery, connection))
                 {
@@ -50,22 +51,23 @@ namespace LoginInterface
 
                     using (SqlDataReader reader = sqlCommand.ExecuteReader())
                     {
-                        if (reader.HasRows == true)
+                        if (reader.Read())
                         {
-                            MessageBox.Show("Found");
+                            userSalt = (byte[])reader["Salt"];
+                            return userSalt;
                         }
                         else
                         {
-                            MessageBox.Show("Failed");
+                            MessageBox.Show("Email not found in the database soz");
+                            return userSalt;
                         }
-                    }
-                    
+                    }   
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
-                
+                return userSalt;
             }
         }
 

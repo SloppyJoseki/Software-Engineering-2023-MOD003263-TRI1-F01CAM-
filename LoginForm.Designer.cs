@@ -40,7 +40,7 @@
             // 
             this.UsernameBox.Location = new System.Drawing.Point(251, 98);
             this.UsernameBox.Name = "UsernameBox";
-            this.UsernameBox.Size = new System.Drawing.Size(100, 22);
+            this.UsernameBox.Size = new System.Drawing.Size(332, 22);
             this.UsernameBox.TabIndex = 0;
             this.UsernameBox.TextChanged += new System.EventHandler(this.UsernameBox_TextChanged);
             // 
@@ -48,7 +48,7 @@
             // 
             this.PasswordBox.Location = new System.Drawing.Point(251, 150);
             this.PasswordBox.Name = "PasswordBox";
-            this.PasswordBox.Size = new System.Drawing.Size(100, 22);
+            this.PasswordBox.Size = new System.Drawing.Size(332, 22);
             this.PasswordBox.TabIndex = 1;
             this.PasswordBox.TextChanged += new System.EventHandler(this.PasswordBox_TextChanged);
             // 
@@ -74,7 +74,7 @@
             // 
             // LoginButton
             // 
-            this.LoginButton.Location = new System.Drawing.Point(329, 199);
+            this.LoginButton.Location = new System.Drawing.Point(490, 199);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(93, 23);
             this.LoginButton.TabIndex = 4;
@@ -84,7 +84,7 @@
             // 
             // CreateAccountButton
             // 
-            this.CreateAccountButton.Location = new System.Drawing.Point(182, 199);
+            this.CreateAccountButton.Location = new System.Drawing.Point(251, 199);
             this.CreateAccountButton.Name = "CreateAccountButton";
             this.CreateAccountButton.Size = new System.Drawing.Size(108, 23);
             this.CreateAccountButton.TabIndex = 5;

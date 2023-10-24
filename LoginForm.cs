@@ -46,7 +46,11 @@ namespace LoginInterface
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-
+           byte[] userSalt = DbConnector.GetInstanceOfDBConnector().CheckEmailGetSalt(UsernameBox.Text);
+            if (userSalt != null)
+            {
+                MessageBox.Show("Good work kiddo");
+            }
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
