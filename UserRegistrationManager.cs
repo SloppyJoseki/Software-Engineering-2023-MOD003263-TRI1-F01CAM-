@@ -38,7 +38,7 @@ namespace LoginInterface
                         mail.Subject = "Testing123";
                         mail.Body = "Hello your authentication code is: " + authCode;
                         smtpClient.Send(mail);
-                        MessageBox.Show("Sent bitch");
+                        MessageBox.Show("Sent");
                     }
                     catch
                     {
