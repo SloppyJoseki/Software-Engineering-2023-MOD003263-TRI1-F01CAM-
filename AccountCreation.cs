@@ -45,7 +45,6 @@ namespace LoginInterface
             userRegistrationManager.SendRegistrationCodeEmail(EmailBox.Text, regCode);
             this.Hide();
             new RegistrationCodeForm(regCode, EmailBox.Text, PasswordBox.Text).Show();
-
         }
 
         private void AccountCreation_Load(object sender, EventArgs e)

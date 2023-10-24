@@ -31,19 +31,18 @@ namespace LoginInterface
 
                 using (MailMessage mail = new MailMessage())
                 {
-                    mail.From = new MailAddress(senderEmail);
-                    mail.To.Add(targetEmail);
-                    mail.Subject = "Testing123";
-                    mail.Body = "Hello your authentication code is: " + authCode;
-
                     try
-                    {
+                    { 
+                        mail.From = new MailAddress(senderEmail);
+                        mail.To.Add(targetEmail);
+                        mail.Subject = "Testing123";
+                        mail.Body = "Hello your authentication code is: " + authCode;
                         smtpClient.Send(mail);
                         MessageBox.Show("Sent bitch");
                     }
                     catch
                     {
-                        MessageBox.Show($"Failed to send email: {senderEmail}");
+                        MessageBox.Show("Failed to send email please enter a valid email address");
                     }
                 }
             }
