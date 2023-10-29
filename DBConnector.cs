@@ -41,9 +41,7 @@ namespace LoginInterface
             try
             {
                 connection.Open();
-
                 String emailQuery = "SELECT Salt FROM UserData WHERE Email COLLATE Latin1_General_CS_AS = @Email";
-
 
                 using (SqlCommand sqlCommand = new SqlCommand(emailQuery, connection))
                 {
@@ -68,6 +66,54 @@ namespace LoginInterface
             {
                 MessageBox.Show("Error: " + ex.Message);
                 return userSalt;
+            }
+        }
+
+        public bool CheckUserPassword(string email, string password, byte[] salt)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            try
+            {
+                connection.Open();
+                string passwordQuery = "SELECT Password FROM UserData WHERE Email COLLATE Latin1_General_CS_AS = @Email";
+
+                using (SqlCommand sqlCommand = new SqlCommand(passwordQuery, connection))
+                {
+                    sqlCommand.Parameters.Add(new SqlParameter("@Email", email));
+
+                    using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            byte[] storedPassword = (byte[])reader["Password"];
+                            UserRegistrationManager userRegistrationManager = new UserRegistrationManager();
+                            byte[] hashedPassword = (userRegistrationManager.HashPassword(password, salt));
+
+                            // SequenceEqual compares each byte in the array wheras !=
+                            // compares only object references
+                            if (!storedPassword.SequenceEqual(hashedPassword))
+                            {
+                                MessageBox.Show("Password wrong sorry mate");
+                                return false;
+                            }
+                            else
+                            {
+                                MessageBox.Show("I'm in");
+                                return true;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Password wrong soz");
+                            return false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                return false;
             }
         }
 

@@ -16,6 +16,7 @@ namespace LoginInterface
         public LoginForm()
         {
             InitializeComponent();
+            LoginButton.Enabled = false;
         }
 
         private void PasswordLabel_Click(object sender, EventArgs e)
@@ -25,12 +26,12 @@ namespace LoginInterface
 
         private void PasswordBox_TextChanged(object sender, EventArgs e)
         {
-
+            LoginButtonControl();
         }
 
         private void UsernameBox_TextChanged(object sender, EventArgs e)
         {
-
+            LoginButtonControl();
         }
 
         private void CreateAccount_Click(object sender, EventArgs e)
@@ -47,10 +48,7 @@ namespace LoginInterface
         private void LoginButton_Click(object sender, EventArgs e)
         {
            byte[] userSalt = DbConnector.GetInstanceOfDBConnector().CheckEmailGetSalt(UsernameBox.Text);
-            if (userSalt != null)
-            {
-                MessageBox.Show("Good work kiddo");
-            }
+           bool isLogin = DbConnector.GetInstanceOfDBConnector().CheckUserPassword(UsernameBox.Text, PasswordBox.Text, userSalt); 
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
@@ -64,6 +62,18 @@ namespace LoginInterface
             {
                 // Ensure that the form is being closed by the user (not programmatically).
                 Application.Exit();
+            }
+        }
+
+        public void LoginButtonControl()
+        {
+            if (!string.IsNullOrEmpty(UsernameBox.Text) && !string.IsNullOrEmpty(PasswordBox.Text))
+            {
+                LoginButton.Enabled = true;
+            }
+            else
+            {
+                LoginButton.Enabled = false;
             }
         }
     }  
