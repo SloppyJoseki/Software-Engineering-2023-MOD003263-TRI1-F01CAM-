@@ -19,8 +19,13 @@ namespace LoginInterface
             return registrationCode;
         }
 
-        public void SendRegistrationCodeEmail(string targetEmail, string authCode)
+        public bool SendRegistrationCodeEmail(string targetEmail, string authCode)
         {
+            if (DbConnector.GetInstanceOfDBConnector().isEmailTaken(targetEmail))
+            {
+                MessageBox.Show("Sorry that email is already in use");
+                return false;
+            }
             string senderEmail = "ThisIsForMyUniProject@gmail.com";
 
             using (SmtpClient smtpClient = new SmtpClient("smtp.gmail.com"))
@@ -39,10 +44,12 @@ namespace LoginInterface
                         mail.Body = "Hello your authentication code is: " + authCode;
                         smtpClient.Send(mail);
                         MessageBox.Show("Sent");
+                        return true;
                     }
                     catch
                     {
                         MessageBox.Show("Failed to send email please enter a valid email address");
+                        return false;
                     }
                 }
             }
@@ -57,12 +64,6 @@ namespace LoginInterface
                 return salt;
             }
         }
-        public byte[] HashPassword(string password, byte[] salt)
-        {
-            using (Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(password, salt, 1000))
-            {
-                return pbkdf2.GetBytes(32);
-            }
-        }
+
     }
 }

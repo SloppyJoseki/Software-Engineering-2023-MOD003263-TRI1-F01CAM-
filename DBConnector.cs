@@ -41,7 +41,8 @@ namespace LoginInterface
             try
             {
                 connection.Open();
-                String emailQuery = "SELECT Salt FROM UserData WHERE Email COLLATE Latin1_General_CS_AS = @Email";
+                Constants_Functions constants = new Constants_Functions();
+                String emailQuery = constants.emailQuery;
 
                 using (SqlCommand sqlCommand = new SqlCommand(emailQuery, connection))
                 {
@@ -75,7 +76,8 @@ namespace LoginInterface
             try
             {
                 connection.Open();
-                string passwordQuery = "SELECT Password FROM UserData WHERE Email COLLATE Latin1_General_CS_AS = @Email";
+                Constants_Functions constants = new Constants_Functions();
+                string passwordQuery = constants.passwordQuery;
 
                 using (SqlCommand sqlCommand = new SqlCommand(passwordQuery, connection))
                 {
@@ -86,8 +88,8 @@ namespace LoginInterface
                         if (reader.Read())
                         {
                             byte[] storedPassword = (byte[])reader["Password"];
-                            UserRegistrationManager userRegistrationManager = new UserRegistrationManager();
-                            byte[] hashedPassword = (userRegistrationManager.HashPassword(password, salt));
+                            Constants_Functions functions = new Constants_Functions();
+                            byte[] hashedPassword = (functions.HashPassword(password, salt));
 
                             // SequenceEqual compares each byte in the array wheras !=
                             // compares only object references
@@ -117,21 +119,48 @@ namespace LoginInterface
             }
         }
 
-        public void AddUserToDB(string username, string password)
+        public bool isEmailTaken(string email)
         {
             SqlConnection connection = new SqlConnection(connectionString);
-            UserRegistrationManager userRegistrationManager = new UserRegistrationManager();
-            byte[] userSalt = userRegistrationManager.GenerateSalt(16);
-            byte[] securePassword = userRegistrationManager.HashPassword(password, userSalt);
+            Constants_Functions constants = new Constants_Functions();
+            string checkEmailQuery = constants.checkEmailQuery;
 
             try
             {
                 connection.Open();
-                string userInsertQuery = "INSERT INTO UserData (Email, Password, Salt) VALUES (@username, @password, @userSalt)";
+                using (SqlCommand sqlCommand = new SqlCommand(checkEmailQuery, connection))
+                {
+                    sqlCommand.Parameters.Add(new SqlParameter("@Email", email));
+                    using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                    {
+                        return reader.HasRows;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                return false;
+            }
+
+        }
+        public void AddUserToDB(string email, string password)
+        {   
+            SqlConnection connection = new SqlConnection(connectionString);
+            UserRegistrationManager userRegistrationManager = new UserRegistrationManager();
+            byte[] userSalt = userRegistrationManager.GenerateSalt(16);
+            Constants_Functions functions = new Constants_Functions();
+            byte[] securePassword = functions.HashPassword(password, userSalt);
+
+            try
+            {
+                connection.Open();
+                Constants_Functions constants = new Constants_Functions();
+                string userInsertQuery = constants.userInsertQuery;
 
                 using (SqlCommand sqlCommand = new SqlCommand(userInsertQuery, connection))
                 {
-                    sqlCommand.Parameters.Add(new SqlParameter("@username", username));
+                    sqlCommand.Parameters.Add(new SqlParameter("@username", email));
                     sqlCommand.Parameters.Add(new SqlParameter("@password", securePassword));
                     sqlCommand.Parameters.Add(new SqlParameter("@userSalt", userSalt));
                     sqlCommand.ExecuteNonQuery();
