@@ -16,5 +16,14 @@ namespace LoginInterface
         {
             InitializeComponent();
         }
+
+        private void EditDbButton_Click(object sender, EventArgs e)
+        {
+            EditForm form_edit = new EditForm();
+
+            form_edit.Show();
+
+            this.Close();
+        }
     }
 }
