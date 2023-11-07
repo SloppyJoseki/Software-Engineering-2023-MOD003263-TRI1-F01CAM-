@@ -58,12 +58,20 @@ namespace LoginInterface
         }
 
         private void button7_Click(object sender, EventArgs e)
+        { 
+            new Dashboard().Show();
+            this.Hide();
+
+
+        }
+
+        private void EditForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Dashboard dashbord = new Dashboard();
-
-            dashbord.Show();
-
-            this.Close();
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                // Ensure that the form is being closed by the user (not programmatically).
+                Application.Exit();
+            }
         }
     }
 }

@@ -22,8 +22,27 @@ namespace LoginInterface
             EditForm form_edit = new EditForm();
 
             form_edit.Show();
+            this.Hide();
+        }
 
-            this.Close();
+        private void Dashboard_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                // Ensure that the form is being closed by the user (not programmatically).
+                Application.Exit();
+            }
+        }
+
+        private void viewFilesButton_Click(object sender, EventArgs e)
+        {
+            new FilesForm().Show();
+            this.Hide();
         }
     }
 }

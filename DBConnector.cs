@@ -8,6 +8,8 @@ using System.Data;
 using System.Windows.Forms;
 using System.Net.Mail;
 using System.Net;
+using System.IO;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace LoginInterface
 {
@@ -23,7 +25,6 @@ namespace LoginInterface
         {
             connectionString = Properties.Settings.Default.DBConnectionString;
         }
-
         public static DbConnector GetInstanceOfDBConnector()
         {
             if (_instance == null)
@@ -33,16 +34,16 @@ namespace LoginInterface
             }
             return _instance;
         }
-
         public byte[] CheckEmailGetSalt(string email)
         {
+            // This function checks if the user entered email is in the database and if so 
+            // returns the relevant salt
             byte[] userSalt = null;
             SqlConnection connection = new SqlConnection(connectionString);
             try
             {
                 connection.Open();
-                Constants_Functions constants = new Constants_Functions();
-                String emailQuery = constants.emailQuery;
+                String emailQuery = Constants_Functions.emailQuery;
 
                 using (SqlCommand sqlCommand = new SqlCommand(emailQuery, connection))
                 {
@@ -69,15 +70,13 @@ namespace LoginInterface
                 return userSalt;
             }
         }
-
         public bool CheckUserPassword(string email, string password, byte[] salt)
         {
             SqlConnection connection = new SqlConnection(connectionString);
             try
             {
                 connection.Open();
-                Constants_Functions constants = new Constants_Functions();
-                string passwordQuery = constants.passwordQuery;
+                string passwordQuery = Constants_Functions.passwordQuery;
 
                 using (SqlCommand sqlCommand = new SqlCommand(passwordQuery, connection))
                 {
@@ -88,8 +87,7 @@ namespace LoginInterface
                         if (reader.Read())
                         {
                             byte[] storedPassword = (byte[])reader["Password"];
-                            Constants_Functions functions = new Constants_Functions();
-                            byte[] hashedPassword = (functions.HashPassword(password, salt));
+                            byte[] hashedPassword = (Constants_Functions.HashPassword(password, salt));
 
                             // SequenceEqual compares each byte in the array wheras !=
                             // compares only object references
@@ -118,12 +116,10 @@ namespace LoginInterface
                 return false;
             }
         }
-
         public bool isEmailTaken(string email)
         {
             SqlConnection connection = new SqlConnection(connectionString);
-            Constants_Functions constants = new Constants_Functions();
-            string checkEmailQuery = constants.checkEmailQuery;
+            string checkEmailQuery = Constants_Functions.checkEmailQuery;
 
             try
             {
@@ -149,14 +145,12 @@ namespace LoginInterface
             SqlConnection connection = new SqlConnection(connectionString);
             UserRegistrationManager userRegistrationManager = new UserRegistrationManager();
             byte[] userSalt = userRegistrationManager.GenerateSalt(16);
-            Constants_Functions functions = new Constants_Functions();
-            byte[] securePassword = functions.HashPassword(password, userSalt);
+            byte[] securePassword = Constants_Functions.HashPassword(password, userSalt);
 
             try
             {
                 connection.Open();
-                Constants_Functions constants = new Constants_Functions();
-                string userInsertQuery = constants.userInsertQuery;
+                string userInsertQuery = Constants_Functions.userInsertQuery;
 
                 using (SqlCommand sqlCommand = new SqlCommand(userInsertQuery, connection))
                 {
@@ -172,6 +166,93 @@ namespace LoginInterface
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+        public void SaveFile(string filePath)
+        {
+            using (Stream stream = File.OpenRead(filePath))
+            {
+                byte[] fileData = new byte[stream.Length];
+                stream.Read(fileData, 0, fileData.Length);
+
+                String fileExtension = Path.GetExtension(filePath);
+                String fileName = Path.GetFileName(filePath);
+                String FileQuery = Constants_Functions.saveFileQuery;
+
+                SqlConnection connection = new SqlConnection(connectionString);
+                try
+                { 
+                    connection.Open();
+                    using (SqlCommand sqlCommand = new SqlCommand(FileQuery, connection))
+                    {
+                        sqlCommand.Parameters.Add(new SqlParameter("@fileData", fileData));
+                        sqlCommand.Parameters.Add(new SqlParameter("@extension", fileExtension));
+                        sqlCommand.Parameters.Add(new SqlParameter("@fileName", fileName));
+                        sqlCommand.ExecuteNonQuery();
+                        MessageBox.Show("File saved bossman!");
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+            }
+        }
+
+        public void OpenFile(int id)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            try
+            {
+                connection.Open();
+                string fileOpenQuery = "SELECT File_Name, File_Data, File_Extension FROM Files WHERE Id = @id";
+
+                using (SqlCommand sqlCommand = new SqlCommand(fileOpenQuery, connection))
+                {
+                    sqlCommand.Parameters.Add(new SqlParameter("@id", id));
+
+                    using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            var name = reader["File_Name"].ToString();
+                            var data = (byte[])reader["File_Data"];
+                            var extn = reader["File_Extension"].ToString();
+                            var newFileName = name.Replace(extn, DateTime.Now.ToString("ddMMyyyyhhmmss")) + extn;
+
+                            File.WriteAllBytes(newFileName, data);
+                            System.Diagnostics.Process.Start(newFileName);
+                        }
+                    }
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+        public DataTable DisplayFileData()
+        {
+            string fileDataQuery = "SELECT Id, File_Name, File_Extension FROM Files";
+
+            SqlConnection connection = new SqlConnection(connectionString);
+            try
+            {
+                connection.Open();
+                using (SqlDataAdapter dataAdapter = new SqlDataAdapter(fileDataQuery, connection))
+                {
+                    DataTable dt = new DataTable();
+                    dataAdapter.Fill(dt); 
+                    return dt;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+                return null;
             }
         }
     }
