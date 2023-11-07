@@ -235,7 +235,7 @@ namespace LoginInterface
         }
         public DataTable DisplayFileData()
         {
-            string fileDataQuery = "SELECT Id, File_Name, File_Extension FROM Files";
+            string fileDataQuery = Constants_Functions.fileDataQuery;
 
             SqlConnection connection = new SqlConnection(connectionString);
             try

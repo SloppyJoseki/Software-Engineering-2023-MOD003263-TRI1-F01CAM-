@@ -19,6 +19,7 @@ namespace LoginInterface
         // This query checks if an email already exsists in the UserData table
         public static string checkEmailQuery = "SELECT 1 FROM UserData WHERE Email COLLATE Latin1_General_CS_AS = @Email";
         public static string saveFileQuery = "INSERT INTO Files (File_Data, File_Extension, File_Name) VALUES(@fileData, @extension, @fileName)";
+        public static string fileDataQuery = "SELECT Id, File_Name, File_Extension FROM Files";
 
         public static byte[] HashPassword(string password, byte[] salt)
         {
