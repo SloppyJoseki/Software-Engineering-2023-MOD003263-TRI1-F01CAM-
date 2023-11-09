@@ -35,7 +35,7 @@ namespace LoginInterface
 
         private void button2_Click(object sender, EventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            using (SqlConnection connection = new SqlConnection(""))
             {
                 connection.Open();
 
@@ -53,6 +53,14 @@ namespace LoginInterface
                 }
             }
         }
-                
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            EditForm editfinder = new EditForm();
+
+            editfinder.Show();
+
+            this.Hide();
+        }
     }
 }
