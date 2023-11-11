@@ -45,20 +45,40 @@ namespace LoginInterface
                 return LoggedInAs.GetInstanceOfLoggedInAs().currentUserEmail + ".txt";
             }
         }
-        public static string logInformation
+        public static string logInformation(params object[] args)
         {
-            get
-            {
-                // Using stackTrace to get the name of the method to add to the log
-                StackTrace stackTrace = new StackTrace();
-                // 0 will be the current method, 1 is the calling method
-                StackFrame stackFrame = stackTrace.GetFrame(1);
-                MethodBase method = stackFrame.GetMethod();
+            // Get the current date and time as a string
+            DateTime currentDateTime = DateTime.Now;
+            string formattedDateTime = currentDateTime.ToString("yyyy-MM-dd HH:mm:ss");
 
-                DateTime currentDateTime = DateTime.Now;
-                string formattedDateTime = currentDateTime.ToString("yyyy-MM-dd HH:mm:ss");
-                return method.Name + " " + formattedDateTime;
+            // Using stackTrace to get the name of the method being called to add to the log
+            StackTrace stackTrace = new StackTrace();
+            StackFrame stackFrame = stackTrace.GetFrame(1);
+            MethodBase method = stackFrame.GetMethod();
+
+            // building the log message
+            StringBuilder logMessage = new StringBuilder();
+            logMessage.Append(method.Name);
+
+            // Appending any arguments passed in
+            if (args.Length > 0)
+            {
+                logMessage.Append(" (");
+
+                for (int i = 0; i < args.Length; i++)
+                {
+                    logMessage.Append(args[i].ToString());
+                    if (i < args.Length - 1)
+                    {
+                        logMessage.Append(", ");
+                    }
+                }
             }
+            
+            logMessage.Append(")");
+            logMessage.Append(" " + formattedDateTime);
+ 
+            return logMessage.ToString();
         }
 
         public static byte[] HashPassword(string password, byte[] salt)

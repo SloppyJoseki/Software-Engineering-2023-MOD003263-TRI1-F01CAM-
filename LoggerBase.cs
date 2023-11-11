@@ -27,6 +27,7 @@ namespace LoginInterface
     }
     public class DBLogger : LoggerBase
     {
+        // This needs to be all fixed and have a table created to save the data properly
         string filePath = Constants_Functions.logFilePath;
         string email = LoggedInAs.GetInstanceOfLoggedInAs().currentUserEmail;
         public override void Log(string message)
