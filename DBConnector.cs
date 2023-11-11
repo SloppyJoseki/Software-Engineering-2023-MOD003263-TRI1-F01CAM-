@@ -198,7 +198,6 @@ namespace LoginInterface
                 }
             }
         }
-
         public void OpenFile(int id)
         {
             SqlConnection connection = new SqlConnection(connectionString);
@@ -252,6 +251,32 @@ namespace LoginInterface
             {
                 MessageBox.Show("Error: " + ex.Message);
                 return null;
+            }
+        }
+        public void SaveLogFile(string filePath, string email)
+        {
+            using (Stream stream = File.OpenRead(filePath))
+            {
+                byte[] fileData = new byte[stream.Length];
+                stream.Read(fileData, 0, fileData.Length);
+
+                String FileQuery = Constants_Functions.saveFileQuery;
+
+                SqlConnection connection = new SqlConnection(connectionString);
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand sqlCommand = new SqlCommand(FileQuery, connection))
+                    {
+                        sqlCommand.Parameters.Add(new SqlParameter("@fileData", fileData));
+                        sqlCommand.Parameters.Add(new SqlParameter("@Email", email));
+                        sqlCommand.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
             }
         }
     }

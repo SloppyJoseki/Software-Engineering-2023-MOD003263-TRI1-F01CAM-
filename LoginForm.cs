@@ -50,10 +50,13 @@ namespace LoginInterface
            byte[] userSalt = DbConnector.GetInstanceOfDBConnector().CheckEmailGetSalt(UsernameBox.Text);
            bool isLogin = DbConnector.GetInstanceOfDBConnector().CheckUserPassword(UsernameBox.Text, PasswordBox.Text, userSalt);
            if (isLogin)
-            {
+           {
+                LoggedInAs.GetInstanceOfLoggedInAs().currentUserEmail = UsernameBox.Text;
+                LoggerHelper.Log(Constants_Functions.LogEndpoint.File, Constants_Functions.logInformation);
+                LoggerHelper.Log(Constants_Functions.LogEndpoint.Database, Constants_Functions.logInformation);
                 this.Hide();
                 new Dashboard().Show();
-            }
+           }
         }
 
         private void LoginForm_Load(object sender, EventArgs e)

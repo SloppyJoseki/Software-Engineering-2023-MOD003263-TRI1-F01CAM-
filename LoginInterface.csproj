@@ -87,6 +87,9 @@
     <Compile Include="FilesForm.Designer.cs">
       <DependentUpon>FilesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoggedInAs.cs" />
+    <Compile Include="LoggerBase.cs" />
+    <Compile Include="LoggerHelper.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
