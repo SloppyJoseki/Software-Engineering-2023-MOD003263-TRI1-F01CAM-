@@ -53,7 +53,7 @@ namespace LoginInterface
            {
                 LoggedInAs.GetInstanceOfLoggedInAs().currentUserEmail = UsernameBox.Text;
                 LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
-                Constants_Functions.logInformation( "UsernameBox.Text: ",UsernameBox.Text));
+                Constants_Functions.logInformation( "UsernameBox.Text: " + UsernameBox.Text));
                 this.Hide();
                 new Dashboard().Show();
            }
