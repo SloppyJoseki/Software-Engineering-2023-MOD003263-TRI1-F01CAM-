@@ -10,48 +10,25 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LoginInterface
 {
     public partial class updateDB : Form
     {
+        static SqlConnection conn = null;
+        static SqlCommand cmd = null;
+
+
         public updateDB()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            using (SqlConnection connection = new SqlConnection(""))
-            {
-                connection.Open();
-
-                // Replace "TableName" with the name of your database table
-                string query = "INSERT INTO TableName (Column1, Column2, Column3) VALUES (@Value1, @Value2, @Value3)";
-
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    // Replace textBox1, textBox2, and textBox3 with the names of your text boxes
-                    command.Parameters.AddWithValue("@Value1", textBox1.Text);
-                    command.Parameters.AddWithValue("@Value2", textBox2.Text);
-                    command.Parameters.AddWithValue("@Value3", textBox3.Text);
-
-                    command.ExecuteNonQuery();
-                }
-            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -61,6 +38,11 @@ namespace LoginInterface
             editfinder.Show();
 
             this.Hide();
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
