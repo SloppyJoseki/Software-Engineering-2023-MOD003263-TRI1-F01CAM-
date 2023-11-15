@@ -17,6 +17,9 @@ namespace LoginInterface
             File, Database
         }
 
+        // This query gets all users that want to observe the database
+        public static string observersQuery = "SELECT Email FROM UserData WHERE Is_Db_Observer = 1";
+
         // This query checks the UserData table for a spesific email and is case sensitive
         public static string emailQuery = "SELECT Salt FROM UserData WHERE Email COLLATE Latin1_General_CS_AS = @Email";
 
@@ -24,7 +27,7 @@ namespace LoginInterface
         public static string passwordQuery = "SELECT Password FROM UserData WHERE Email COLLATE Latin1_General_CS_AS = @Email";
 
         // This query inserts an email password and salt into the UserData table
-        public static string userInsertQuery = "INSERT INTO UserData (Email, Password, Salt) VALUES (@username, @password, @userSalt)";
+        public static string userInsertQuery = "INSERT INTO UserData (Email, Password, Salt, Is_Admin, Is_Db_Observer) VALUES (@username, @password, @userSalt, @Is_Admin, @Is_Db_Observer)";
 
         // This query checks if an email already exsists in the UserData table
         public static string checkEmailQuery = "SELECT 1 FROM UserData WHERE Email COLLATE Latin1_General_CS_AS = @Email";
@@ -42,7 +45,8 @@ namespace LoginInterface
             // Allows the log file to be named after the specific user that is logged in 
             get
             {
-                return LoggedInAs.GetInstanceOfLoggedInAs().currentUserEmail + ".txt";
+                // return LoggedInAs.GetInstanceOfLoggedInAs().currentUserEmail + ".txt";
+                return "Log.txt";
             }
         }
         public static string logInformation(params object[] args)
@@ -59,11 +63,11 @@ namespace LoginInterface
             // building the log message
             StringBuilder logMessage = new StringBuilder();
             logMessage.Append(method.Name);
+            logMessage.Append(" (");
 
             // Appending any arguments passed in
             if (args.Length > 0)
             {
-                logMessage.Append(" (");
 
                 for (int i = 0; i < args.Length; i++)
                 {

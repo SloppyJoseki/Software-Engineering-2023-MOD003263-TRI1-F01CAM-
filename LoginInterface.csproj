@@ -75,6 +75,7 @@
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="DBConnector.cs" />
+    <Compile Include="DbObserver.cs" />
     <Compile Include="EditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +88,7 @@
     <Compile Include="FilesForm.Designer.cs">
       <DependentUpon>FilesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces.cs" />
     <Compile Include="LoggedInAs.cs" />
     <Compile Include="LoggerBase.cs" />
     <Compile Include="LoggerHelper.cs" />

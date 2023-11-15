@@ -36,6 +36,8 @@ namespace LoginInterface
 
         private void CreateAccount_Click(object sender, EventArgs e)
         {
+            LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+            Constants_Functions.logInformation());
             this.Hide();
             new AccountCreation().Show();
         }
@@ -61,7 +63,8 @@ namespace LoginInterface
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-
+            // Instantly create the list of Db observers on launch
+            DbConnector.GetInstanceOfDBConnector().GetObserverList();
         }
 
         private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)

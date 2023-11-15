@@ -12,14 +12,13 @@ using System.IO;
 
 namespace LoginInterface
 {
-    class DbConnector
+    class DbConnector : IDBConnector
     {
+        private List<IdbObserver> observers = new List<IdbObserver>();
         private static DbConnector _instance;
-
         private String connectionString;
 
-        private SqlConnection connectToDb;
-
+        // Singleton design methods 
         private DbConnector()
         {
             connectionString = Properties.Settings.Default.DBConnectionString;
@@ -33,6 +32,45 @@ namespace LoginInterface
             }
             return _instance;
         }
+
+        // Observer design methods
+        public void AddDbObserver(IdbObserver observer)
+        {
+            observers.Add(observer);
+        }
+        public void RemoveDbObserver(IdbObserver observer)
+        {
+            observers.Remove(observer);
+        }
+        public void NotifyDbObservers(string message)
+        {
+            foreach (var observer in observers)
+            {
+                observer.Update(message);
+            }
+        }
+
+        // Get the list of observers
+        public void GetObserverList()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(Constants_Functions.observersQuery, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string email = reader["Email"].ToString();
+                            AddDbObserver(new DbObserver(email));
+                        }
+                    }                   
+                }
+            }
+        }
+
+        // Db interaction methods 
         public byte[] CheckEmailGetSalt(string email)
         {
             // This function checks if the user entered email is in the database and if so 
@@ -156,6 +194,8 @@ namespace LoginInterface
                     sqlCommand.Parameters.Add(new SqlParameter("@username", email));
                     sqlCommand.Parameters.Add(new SqlParameter("@password", securePassword));
                     sqlCommand.Parameters.Add(new SqlParameter("@userSalt", userSalt));
+                    sqlCommand.Parameters.Add(new SqlParameter("@Is_Admin", SqlDbType.Bit) { Value = false });
+                    sqlCommand.Parameters.Add(new SqlParameter("@Is_Db_Observer", SqlDbType.Bit) { Value = false });
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Task failed successfully");
                     connection.Close();
@@ -188,7 +228,10 @@ namespace LoginInterface
                         sqlCommand.Parameters.Add(new SqlParameter("@extension", fileExtension));
                         sqlCommand.Parameters.Add(new SqlParameter("@fileName", fileName));
                         sqlCommand.ExecuteNonQuery();
-                        MessageBox.Show("File saved bossman!");
+                        string fileSavedNotification = "A new file has been saved by: " +
+                        LoggedInAs.GetInstanceOfLoggedInAs().currentUserEmail + " it is named: " +
+                        fileName;
+                        NotifyDbObservers(fileSavedNotification);
                     }
 
                 }
