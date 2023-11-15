@@ -60,7 +60,7 @@
             this.viewFilesButton.TabIndex = 2;
             this.viewFilesButton.Text = "View Files";
             this.viewFilesButton.UseVisualStyleBackColor = true;
-            this.viewFilesButton.Click += new System.EventHandler(this.viewFilesButton_Click);
+            this.viewFilesButton.Click += new System.EventHandler(this.ViewFilesButton_Click);
             // 
             // Dashboard
             // 

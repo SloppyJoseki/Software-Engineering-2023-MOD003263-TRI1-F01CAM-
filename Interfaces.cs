@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace LoginInterface
 {
     // Interface for the db observers
-    internal interface IdbObserver
+    internal interface IDbObserver
     {
         // Update all of the observers of a change in the database
         void Update(string message);
@@ -17,10 +17,10 @@ namespace LoginInterface
     internal interface IDBConnector
     {
         // Register an observer
-        void AddDbObserver(IdbObserver observer);
+        void AddDbObserver(IDbObserver observer);
 
         // Remove an observer from the list
-        void RemoveDbObserver(IdbObserver observer);
+        void RemoveDbObserver(IDbObserver observer);
 
         // Cause the observers to update the users
         void NotifyDbObservers(string message);

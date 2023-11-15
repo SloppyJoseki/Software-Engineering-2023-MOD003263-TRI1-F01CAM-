@@ -37,7 +37,7 @@ namespace LoginInterface
         private void CreateAccount_Click(object sender, EventArgs e)
         {
             LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
-            Constants_Functions.logInformation());
+            Constants_Functions.LogInformation());
             this.Hide();
             new AccountCreation().Show();
         }
@@ -53,9 +53,9 @@ namespace LoginInterface
            bool isLogin = DbConnector.GetInstanceOfDBConnector().CheckUserPassword(UsernameBox.Text, PasswordBox.Text, userSalt);
            if (isLogin)
            {
-                LoggedInAs.GetInstanceOfLoggedInAs().currentUserEmail = UsernameBox.Text;
+                LoggedInAs.GetInstanceOfLoggedInAs().CurrentUserEmail = UsernameBox.Text;
                 LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
-                Constants_Functions.logInformation( "UsernameBox.Text: " + UsernameBox.Text));
+                Constants_Functions.LogInformation( "UsernameBox.Text: " + UsernameBox.Text));
                 this.Hide();
                 new Dashboard().Show();
            }

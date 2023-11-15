@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace LoginInterface
 {
-    internal class DbObserver : IdbObserver
+    internal class DbObserver : IDbObserver
     {
-        private string userEmail;
+        readonly private string userEmail;
         public DbObserver(string email)
         {
             userEmail = email;

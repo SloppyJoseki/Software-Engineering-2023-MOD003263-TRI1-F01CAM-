@@ -14,9 +14,9 @@ namespace LoginInterface
 {
     class DbConnector : IDBConnector
     {
-        private List<IdbObserver> observers = new List<IdbObserver>();
+        readonly private List<IDbObserver> observers = new List<IDbObserver>();
         private static DbConnector _instance;
-        private String connectionString;
+        readonly private String connectionString;
 
         // Singleton design methods 
         private DbConnector()
@@ -34,11 +34,11 @@ namespace LoginInterface
         }
 
         // Observer design methods
-        public void AddDbObserver(IdbObserver observer)
+        public void AddDbObserver(IDbObserver observer)
         {
             observers.Add(observer);
         }
-        public void RemoveDbObserver(IdbObserver observer)
+        public void RemoveDbObserver(IDbObserver observer)
         {
             observers.Remove(observer);
         }
@@ -55,7 +55,7 @@ namespace LoginInterface
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlCommand command = new SqlCommand(Constants_Functions.observersQuery, connection))
+                using (SqlCommand command = new SqlCommand(Constants_Functions.ObserversQuery, connection))
                 {
                     connection.Open();
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -80,7 +80,7 @@ namespace LoginInterface
             try
             {
                 connection.Open();
-                String emailQuery = Constants_Functions.emailQuery;
+                String emailQuery = Constants_Functions.EmailQuery;
 
                 using (SqlCommand sqlCommand = new SqlCommand(emailQuery, connection))
                 {
@@ -113,7 +113,7 @@ namespace LoginInterface
             try
             {
                 connection.Open();
-                string passwordQuery = Constants_Functions.passwordQuery;
+                string passwordQuery = Constants_Functions.PasswordQuery;
 
                 using (SqlCommand sqlCommand = new SqlCommand(passwordQuery, connection))
                 {
@@ -153,10 +153,10 @@ namespace LoginInterface
                 return false;
             }
         }
-        public bool isEmailTaken(string email)
+        public bool IsEmailTaken(string email)
         {
             SqlConnection connection = new SqlConnection(connectionString);
-            string checkEmailQuery = Constants_Functions.checkEmailQuery;
+            string checkEmailQuery = Constants_Functions.CheckEmailQuery;
 
             try
             {
@@ -187,7 +187,7 @@ namespace LoginInterface
             try
             {
                 connection.Open();
-                string userInsertQuery = Constants_Functions.userInsertQuery;
+                string userInsertQuery = Constants_Functions.UserInsertQuery;
 
                 using (SqlCommand sqlCommand = new SqlCommand(userInsertQuery, connection))
                 {
@@ -216,7 +216,7 @@ namespace LoginInterface
 
                 String fileExtension = Path.GetExtension(filePath);
                 String fileName = Path.GetFileName(filePath);
-                String FileQuery = Constants_Functions.saveFileQuery;
+                String FileQuery = Constants_Functions.SaveFileQuery;
 
                 SqlConnection connection = new SqlConnection(connectionString);
                 try
@@ -229,7 +229,7 @@ namespace LoginInterface
                         sqlCommand.Parameters.Add(new SqlParameter("@fileName", fileName));
                         sqlCommand.ExecuteNonQuery();
                         string fileSavedNotification = "A new file has been saved by: " +
-                        LoggedInAs.GetInstanceOfLoggedInAs().currentUserEmail + " it is named: " +
+                        LoggedInAs.GetInstanceOfLoggedInAs().CurrentUserEmail + " it is named: " +
                         fileName;
                         NotifyDbObservers(fileSavedNotification);
                     }
@@ -276,7 +276,7 @@ namespace LoginInterface
         }
         public DataTable DisplayFileData()
         {
-            string fileDataQuery = Constants_Functions.fileDataQuery;
+            string fileDataQuery = Constants_Functions.FileDataQuery;
 
             SqlConnection connection = new SqlConnection(connectionString);
             try
@@ -303,7 +303,7 @@ namespace LoginInterface
                 byte[] fileData = new byte[stream.Length];
                 stream.Read(fileData, 0, fileData.Length);
 
-                String FileQuery = Constants_Functions.saveFileQuery;
+                String FileQuery = Constants_Functions.SaveFileQuery;
 
                 SqlConnection connection = new SqlConnection(connectionString);
                 try

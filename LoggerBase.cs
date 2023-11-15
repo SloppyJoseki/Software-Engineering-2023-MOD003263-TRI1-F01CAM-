@@ -15,7 +15,7 @@ namespace LoginInterface
     }
     public class FileLogger : LoggerBase
     {
-        public string filePath = Constants_Functions.logFilePath;
+        public string filePath = Constants_Functions.LogFilePath;
 
         public override void Log(string message)
         {
@@ -28,8 +28,8 @@ namespace LoginInterface
     public class DBLogger : LoggerBase
     {
         // This needs to be all fixed and have a table created to save the data properly
-        string filePath = Constants_Functions.logFilePath;
-        string email = LoggedInAs.GetInstanceOfLoggedInAs().currentUserEmail;
+        readonly string filePath = Constants_Functions.LogFilePath;
+        readonly string email = LoggedInAs.GetInstanceOfLoggedInAs().CurrentUserEmail;
         public override void Log(string message)
         {
             DbConnector.GetInstanceOfDBConnector().SaveFile(filePath);

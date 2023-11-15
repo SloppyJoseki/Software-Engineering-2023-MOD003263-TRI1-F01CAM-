@@ -11,7 +11,7 @@ namespace LoginInterface
         // Another singleton design to keep track of who is logged in
         private static LoggedInAs _instance;
         private LoggedInAs() { }
-        public string currentUserEmail
+        public string CurrentUserEmail
         {
             get;
             set;

@@ -21,7 +21,7 @@ namespace LoginInterface
 
         public bool SendRegistrationCodeEmail(string targetEmail, string authCode)
         {
-            if (DbConnector.GetInstanceOfDBConnector().isEmailTaken(targetEmail))
+            if (DbConnector.GetInstanceOfDBConnector().IsEmailTaken(targetEmail))
             {
                 MessageBox.Show("Sorry that email is already in use");
                 return false;
