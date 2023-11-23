@@ -12,9 +12,9 @@ namespace LoginInterface
 {
     public partial class RegistrationCodeForm : Form
     {
-        string regCode;
-        string email;
-        string password;
+        readonly string regCode;
+        readonly string email;
+        readonly string password;
         public RegistrationCodeForm(string regCode, string email, string password)
         {
             InitializeComponent();

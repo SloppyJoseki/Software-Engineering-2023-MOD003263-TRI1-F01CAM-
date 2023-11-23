@@ -9,21 +9,25 @@ using System.Windows.Forms;
 using System.Net.Mail;
 using System.Net;
 using System.IO;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Data.Common;
+using System.Security.Cryptography;
+using System.Collections.ObjectModel;
 
 namespace LoginInterface
 {
-    class DbConnector
+    class DbConnector : IDBConnector
     {
+        readonly private List<IDbObserver> observers = new List<IDbObserver>();
         private static DbConnector _instance;
+        readonly private String connectionString;
+        readonly private String connectionString2;
 
-        private String connectionString;
 
-        private SqlConnection connectToDb;
-
+        // Singleton design methods 
         private DbConnector()
         {
             connectionString = Properties.Settings.Default.DBConnectionString;
+            connectionString2 = Properties.Settings.Default.DBExcludingUsersConnectionString;
         }
         public static DbConnector GetInstanceOfDBConnector()
         {
@@ -34,6 +38,108 @@ namespace LoginInterface
             }
             return _instance;
         }
+        //method to load table from DBExcludingUsers
+        public DataSet getDataSet(string sqlQuery)
+        {
+            //create a dataset
+            DataSet ds = new DataSet();
+
+            using (SqlConnection connToDB2 = new SqlConnection(connectionString2))
+            {
+                //open connection
+                connToDB2.Open();
+
+                SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, connToDB2);
+                //fills dataset
+                adapter.Fill(ds);
+            }
+            return ds;
+        }
+        //method to add peramiters from updateDB Form in DBExcludingUsers
+        public void addToDB(string sqlQuery, int data0, string data1, string data2, int data3, int data4, string data5)
+        {
+            using (SqlConnection connToDB2 = new SqlConnection(connectionString2))
+            {
+                connToDB2.Open();
+
+                SqlCommand sqlCommand = new SqlCommand(sqlQuery, connToDB2);
+
+                sqlCommand.CommandType = CommandType.Text;
+
+                sqlCommand.Parameters.Add(new SqlParameter("Company_ID", data0));
+                sqlCommand.Parameters.Add(new SqlParameter("Company_name", data1));
+                sqlCommand.Parameters.Add(new SqlParameter("Company_website", data2));
+                sqlCommand.Parameters.Add(new SqlParameter("Company_established", data3));
+                sqlCommand.Parameters.Add(new SqlParameter("No_of_Employees", data4));
+                sqlCommand.Parameters.Add(new SqlParameter("Internal_Professional_Services", data5));
+
+                //execution of command
+                sqlCommand.ExecuteNonQuery();
+
+
+            }
+        }
+        //method to update peramiters from updateDB Form in DBExcludingUsers
+        public void updateToDB(string sqlQuery, int data0, string data1, string data2, int data3, int data4, string data5)
+        {
+            using (SqlConnection connToDB2 = new SqlConnection(connectionString2))
+            {
+                connToDB2.Open();
+
+                using (SqlCommand command = new SqlCommand(sqlQuery, connToDB2))
+                {
+                    command.Parameters.AddWithValue("@CompanyName", data1);
+                    command.Parameters.AddWithValue("@CompanyWebsite", data2);
+                    command.Parameters.AddWithValue("@CompanyEstablished", data3);
+                    command.Parameters.AddWithValue("@NumberOfEmployees", data4);
+                    command.Parameters.AddWithValue("@InternalServices", data5);
+                    command.Parameters.AddWithValue("@CompanyID", data0);
+
+                    // Execute the command
+                    int rowsAffected = command.ExecuteNonQuery();
+
+
+                }
+            }
+        }
+        // Observer design methods
+        public void AddDbObserver(IDbObserver observer)
+        {
+            observers.Add(observer);
+        }
+        public void RemoveDbObserver(IDbObserver observer)
+        {
+            observers.Remove(observer);
+        }
+        public void NotifyDbObservers(string message)
+        {
+            foreach (var observer in observers)
+            {
+                observer.Update(message);
+            }
+        }
+
+        // Get the list of observers
+        public void GetObserverList()
+        {
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(Constants_Functions.ObserversQuery, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string email = reader["Email"].ToString();
+                            AddDbObserver(new DbObserver(email));
+                        }
+                    }                   
+                }
+            }
+        }
+
+        // Db interaction methods 
         public byte[] CheckEmailGetSalt(string email)
         {
             // This function checks if the user entered email is in the database and if so 
@@ -43,7 +149,7 @@ namespace LoginInterface
             try
             {
                 connection.Open();
-                String emailQuery = Constants_Functions.emailQuery;
+                String emailQuery = Constants_Functions.EmailQuery;
 
                 using (SqlCommand sqlCommand = new SqlCommand(emailQuery, connection))
                 {
@@ -76,7 +182,7 @@ namespace LoginInterface
             try
             {
                 connection.Open();
-                string passwordQuery = Constants_Functions.passwordQuery;
+                string passwordQuery = Constants_Functions.PasswordQuery;
 
                 using (SqlCommand sqlCommand = new SqlCommand(passwordQuery, connection))
                 {
@@ -116,10 +222,10 @@ namespace LoginInterface
                 return false;
             }
         }
-        public bool isEmailTaken(string email)
+        public bool IsEmailTaken(string email)
         {
             SqlConnection connection = new SqlConnection(connectionString);
-            string checkEmailQuery = Constants_Functions.checkEmailQuery;
+            string checkEmailQuery = Constants_Functions.CheckEmailQuery;
 
             try
             {
@@ -150,13 +256,15 @@ namespace LoginInterface
             try
             {
                 connection.Open();
-                string userInsertQuery = Constants_Functions.userInsertQuery;
+                string userInsertQuery = Constants_Functions.UserInsertQuery;
 
                 using (SqlCommand sqlCommand = new SqlCommand(userInsertQuery, connection))
                 {
                     sqlCommand.Parameters.Add(new SqlParameter("@username", email));
                     sqlCommand.Parameters.Add(new SqlParameter("@password", securePassword));
                     sqlCommand.Parameters.Add(new SqlParameter("@userSalt", userSalt));
+                    sqlCommand.Parameters.Add(new SqlParameter("@Is_Admin", SqlDbType.Bit) { Value = false });
+                    sqlCommand.Parameters.Add(new SqlParameter("@Is_Db_Observer", SqlDbType.Bit) { Value = false });
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Task failed successfully");
                     connection.Close();
@@ -177,7 +285,7 @@ namespace LoginInterface
 
                 String fileExtension = Path.GetExtension(filePath);
                 String fileName = Path.GetFileName(filePath);
-                String FileQuery = Constants_Functions.saveFileQuery;
+                String FileQuery = Constants_Functions.SaveFileQuery;
 
                 SqlConnection connection = new SqlConnection(connectionString);
                 try
@@ -189,7 +297,10 @@ namespace LoginInterface
                         sqlCommand.Parameters.Add(new SqlParameter("@extension", fileExtension));
                         sqlCommand.Parameters.Add(new SqlParameter("@fileName", fileName));
                         sqlCommand.ExecuteNonQuery();
-                        MessageBox.Show("File saved bossman!");
+                        string fileSavedNotification = "A new file has been saved by: " +
+                        LoggedInAs.GetInstanceOfLoggedInAs().CurrentUserEmail + " it is named: " +
+                        fileName;
+                        NotifyDbObservers(fileSavedNotification);
                     }
 
                 }
@@ -199,7 +310,6 @@ namespace LoginInterface
                 }
             }
         }
-
         public void OpenFile(int id)
         {
             SqlConnection connection = new SqlConnection(connectionString);
@@ -235,7 +345,7 @@ namespace LoginInterface
         }
         public DataTable DisplayFileData()
         {
-            string fileDataQuery = "SELECT Id, File_Name, File_Extension FROM Files";
+            string fileDataQuery = Constants_Functions.FileDataQuery;
 
             SqlConnection connection = new SqlConnection(connectionString);
             try
@@ -253,6 +363,32 @@ namespace LoginInterface
             {
                 MessageBox.Show("Error: " + ex.Message);
                 return null;
+            }
+        }
+        public void SaveLogFile(string filePath, string email)
+        {
+            using (Stream stream = File.OpenRead(filePath))
+            {
+                byte[] fileData = new byte[stream.Length];
+                stream.Read(fileData, 0, fileData.Length);
+
+                String FileQuery = Constants_Functions.SaveFileQuery;
+
+                SqlConnection connection = new SqlConnection(connectionString);
+                try
+                {
+                    connection.Open();
+                    using (SqlCommand sqlCommand = new SqlCommand(FileQuery, connection))
+                    {
+                        sqlCommand.Parameters.Add(new SqlParameter("@fileData", fileData));
+                        sqlCommand.Parameters.Add(new SqlParameter("@Email", email));
+                        sqlCommand.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                }
             }
         }
     }

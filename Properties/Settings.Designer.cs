@@ -25,6 +25,15 @@ namespace LoginInterface.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("icvg acba qruj prfl")]
+        public string EmailAppPassword {
+            get {
+                return ((string)(this["EmailAppPassword"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\Users.mdf;Int" +
             "egrated Security=True;Connect Timeout=30")]
@@ -36,10 +45,12 @@ namespace LoginInterface.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("icvg acba qruj prfl")]
-        public string EmailAppPassword {
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\DBExcludingUs" +
+            "ers.mdf;Integrated Security=True;Connect Timeout=30")]
+        public string DBExcludingUsersConnectionString {
             get {
-                return ((string)(this["EmailAppPassword"]));
+                return ((string)(this["DBExcludingUsersConnectionString"]));
             }
         }
     }

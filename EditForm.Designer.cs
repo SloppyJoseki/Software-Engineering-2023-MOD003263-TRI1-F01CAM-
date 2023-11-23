@@ -33,17 +33,17 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.DGV = new System.Windows.Forms.DataGridView();
+            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button6 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.home_btn = new System.Windows.Forms.Button();
             this.companyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dBExcludingUsersDataSet = new LoginInterface.DBExcludingUsersDataSet();
-            this.home_btn = new System.Windows.Forms.Button();
             this.companyTableAdapter = new LoginInterface.DBExcludingUsersDataSetTableAdapters.CompanyTableAdapter();
-            this.Edit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGV)).BeginInit();
@@ -74,7 +74,7 @@
             this.panel1.Location = new System.Drawing.Point(77, 21);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(715, 370);
+            this.panel1.Size = new System.Drawing.Size(712, 376);
             this.panel1.TabIndex = 2;
             // 
             // panel2
@@ -97,6 +97,15 @@
             this.DGV.Size = new System.Drawing.Size(668, 282);
             this.DGV.TabIndex = 0;
             this.DGV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Edit
+            // 
+            this.Edit.DataPropertyName = "Company_ID";
+            this.Edit.HeaderText = "Edit";
+            this.Edit.MinimumWidth = 8;
+            this.Edit.Name = "Edit";
+            this.Edit.UseColumnTextForButtonValue = true;
+            this.Edit.Width = 150;
             // 
             // button6
             // 
@@ -164,6 +173,17 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
+            // home_btn
+            // 
+            this.home_btn.Location = new System.Drawing.Point(8, 83);
+            this.home_btn.Margin = new System.Windows.Forms.Padding(2);
+            this.home_btn.Name = "home_btn";
+            this.home_btn.Size = new System.Drawing.Size(61, 65);
+            this.home_btn.TabIndex = 3;
+            this.home_btn.Text = "Home";
+            this.home_btn.UseVisualStyleBackColor = true;
+            this.home_btn.Click += new System.EventHandler(this.Button7_Click);
+            // 
             // companyBindingSource
             // 
             this.companyBindingSource.DataMember = "Company";
@@ -174,35 +194,15 @@
             this.dBExcludingUsersDataSet.DataSetName = "DBExcludingUsersDataSet";
             this.dBExcludingUsersDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // home_btn
-            // 
-            this.home_btn.Location = new System.Drawing.Point(8, 83);
-            this.home_btn.Margin = new System.Windows.Forms.Padding(2);
-            this.home_btn.Name = "home_btn";
-            this.home_btn.Size = new System.Drawing.Size(64, 59);
-            this.home_btn.TabIndex = 3;
-            this.home_btn.Text = "Home";
-            this.home_btn.UseVisualStyleBackColor = true;
-            this.home_btn.Click += new System.EventHandler(this.Button7_Click);
-            // 
             // companyTableAdapter
             // 
             this.companyTableAdapter.ClearBeforeFill = true;
-            // 
-            // Edit
-            // 
-            this.Edit.DataPropertyName = "Company_ID";
-            this.Edit.HeaderText = "Edit";
-            this.Edit.MinimumWidth = 8;
-            this.Edit.Name = "Edit";
-            this.Edit.UseColumnTextForButtonValue = true;
-            this.Edit.Width = 150;
             // 
             // EditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(831, 432);
+            this.ClientSize = new System.Drawing.Size(1058, 516);
             this.Controls.Add(this.home_btn);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
