@@ -2,107 +2,110 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.Common;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
 namespace LoginInterface
 {
     public partial class EditForm : Form
+
+        
     {
         DBExcludingUsersDataSet dataTable = new DBExcludingUsersDataSet();
-
         public EditForm()
         {
             InitializeComponent();
-
             //binding to the database
-            dataGridView1.DataSource = dataTable;
+            DGV.DataSource = dataTable;
             //enables editing
-            dataGridView1.ReadOnly = false;
+            DGV.ReadOnly = false;
             //auto generate the columns
-            dataGridView1.AutoGenerateColumns = true;
-
+            DGV.AutoGenerateColumns = true;
         }
 
-
-        private void button6_Click(object sender, EventArgs e)
+        private void Button6_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void Label1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            DbConnector dbconn = DbConnector.GetInstanceOfDBConnector();
+            DataSet dscompany = dbconn.getDataSet("SELECT * From Company");
+            DGV.DataSource = dscompany.Tables[0];
+    
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Button3_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button4_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void Button5_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            //sends user back to the dashbord
-            Dashboard dashbord = new Dashboard();
-            dashbord.Show();
-
+        private void Button7_Click(object sender, EventArgs e)
+        { 
+            new Dashboard().Show();
             this.Hide();
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void EditForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //closes window
-            this.Close();
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                // Ensure that the form is being closed by the user (not programmatically).
+                Application.Exit();
+            }
         }
 
-        private void button7_Click_1(object sender, EventArgs e)
+        private void EditForm_Load(object sender, EventArgs e)
         {
-            //sends users to vendor search
-        }
-
-
-        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
+            // TODO: This line of code loads data into the 'dBExcludingUsersDataSet.Company' table. You can move, or remove it, as needed.
+            this.companyTableAdapter.Fill(this.dBExcludingUsersDataSet.Company);
 
         }
 
-        private void dBExcludingUsersDataSetBindingSource_CurrentChanged(object sender, EventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            DGV.DataSource = dataTable;
+            //enables editing
+            DGV.ReadOnly = false;
+            //auto generate the columns
+            DGV.AutoGenerateColumns = true;
 
+            //sends user to update form so they can update the row they selected
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
+            {
+
+                // Create a new form or use the data retrieved to open a new form
+                // For example, open a new form with the selected data
+                updateDB form_update = new updateDB();
+                form_update.Show();
+                this.Hide(); // Close the UpdateForm after updating
+
+            }
         }
     }
 }
