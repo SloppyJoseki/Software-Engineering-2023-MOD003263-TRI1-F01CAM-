@@ -12,21 +12,23 @@ using System.Data.SqlClient;
 using System.Data.Common;
 using System.Data.Odbc;
 using System.Reflection;
+using LoginInterface;
+using System.Collections;
 
 namespace SearchFeature
 {
     public partial class SearchForm : Form
     {
-        private DBConnection dbConn;
+
 
         public SearchForm()
         {
             InitializeComponent();
-            dbConn = DBConnection.getInstanceOfDBConnection();
         }
 
+        
 
-        private void SearchAndFilter(string searchText, string typeFilter, string cloudFilter)
+     /*   private void SearchAndFilter(string searchText, string typeFilter, string cloudFilter)
         {
             // Construct base SQL query
             string query = "SELECT * FROM Software WHERE ";
@@ -39,9 +41,9 @@ namespace SearchFeature
                 {
                     query += " OR ";
                 }
-                query += $"CONVERT(NVARCHAR(MAX), [{columnNames[i]}]) LIKE @searchText";
+                query += $"CONVERT(NVARCHAR(MAX), [{columnNames[i]}]) LIKE @searchText{i}";
 
-            }
+            }  
 
             //Add filters based on searchbar and combobox
             //searchtext
@@ -73,17 +75,19 @@ namespace SearchFeature
             }
 
 
-            //Add parameters to query
-            SqlParameter[] parameters =
+            SqlParameter[] parameters = new SqlParameter[columnNames.Length + 3];
+            parameters[0] = new SqlParameter("@searchText", $"%{searchText}%");
+
+            for (int i = 0; i < columnNames.Length; i++)
             {
-                new SqlParameter("@SearchText", $"%{searchText}%"),
-                new SqlParameter("@typeFilter", typeFilter),
-                new SqlParameter("@cloudFilter", cloudFilter)
+                parameters[i + 1] = new SqlParameter("@searchText", $"%{searchText}%");
+            }
 
-            };
+            parameters[columnNames.Length + 1] = new SqlParameter("@typeFilter", typeFilter);
+            parameters[columnNames.Length + 2] = new SqlParameter("@cloudFilter", cloudFilter);
 
-
-            DataSet filteredData = dbConn.getDataSet(query, parameters);
+            MessageBox.Show(query);
+            DataSet filteredData = DbConnector.GetInstanceOfDBConnector().getDataSet(query);
 
             if (filteredData != null && filteredData.Tables.Count > 0)
             {
@@ -97,11 +101,12 @@ namespace SearchFeature
             }
 
         }
+     */
 
 
         private void FillGrid() 
         {
-            DataSet dataS = dbConn.getDataSet("SELECT * FROM Software");
+            DataSet dataS = DbConnector.GetInstanceOfDBConnector().getDataSet("SELECT * FROM Software");
             if (dataS != null && dataS.Tables.Count > 0)
             {
                 dataGridView1.DataSource = dataS.Tables[0];
@@ -114,14 +119,6 @@ namespace SearchFeature
         }
 
 
-        private string[] GetColumnNames()
-        {
-            DataSet schema = dbConn.getDataSet("SELECT TOP 0 * FROM Software");
-            return schema.Tables[0].Columns.Cast<DataColumn>().Select(c => c.ColumnName).ToArray();
-
-        }
-
-
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -131,12 +128,10 @@ namespace SearchFeature
         private void buttonSearch_Click(object sender, EventArgs e)
         {
 
-            string searchText = searchBar.Text.Trim();
-            string typeFilter = comboBoxType.SelectedItem?.ToString();
-            string cloudFilter = comboBoxCloud.SelectedItem?.ToString();
-            
-            SearchAndFilter(searchText, typeFilter, cloudFilter);
-           
+            string searchText = searchBar.Text;
+            DataSet timmy = DbConnector.GetInstanceOfDBConnector().SearchAndFiltering(searchText);
+
+            dataGridView1.DataSource = timmy.Tables[0];    
         }
 
         private void searchBar_TextChanged(object sender, EventArgs e)
@@ -160,6 +155,15 @@ namespace SearchFeature
         {
             //Starts filtering when selected item in comboboxCloud changes
             buttonSearch_Click(sender, e);
+        }
+
+        private void SearchForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                // Ensure that the form is being closed by the user (not programmatically).
+                Application.Exit();
+            }
         }
     }
 }

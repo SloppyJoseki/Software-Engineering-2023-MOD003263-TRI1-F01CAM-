@@ -113,6 +113,12 @@
     <Compile Include="RegistrationCodeForm.Designer.cs">
       <DependentUpon>RegistrationCodeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SearchForm.Designer.cs">
+      <DependentUpon>SearchForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="updateDB.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,6 +152,9 @@
     </Compile>
     <EmbeddedResource Include="RegistrationCodeForm.resx">
       <DependentUpon>RegistrationCodeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SearchForm.resx">
+      <DependentUpon>SearchForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="updateDB.resx">
       <DependentUpon>updateDB.cs</DependentUpon>

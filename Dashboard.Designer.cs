@@ -41,6 +41,7 @@
             this.SearchButton.TabIndex = 0;
             this.SearchButton.Text = "Search stuff";
             this.SearchButton.UseVisualStyleBackColor = true;
+            this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
             // 
             // EditDbButton
             // 

@@ -116,6 +116,7 @@
             this.Controls.Add(this.dataGridView1);
             this.Name = "SearchForm";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SearchForm_FormClosing);
             this.Load += new System.EventHandler(this.SearchForm_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

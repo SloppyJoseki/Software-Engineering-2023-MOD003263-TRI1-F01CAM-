@@ -12,6 +12,7 @@ using System.IO;
 using System.Data.Common;
 using System.Security.Cryptography;
 using System.Collections.ObjectModel;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace LoginInterface
 {
@@ -41,17 +42,25 @@ namespace LoginInterface
         {
             //create a dataset
             DataSet ds = new DataSet();
-
-            using (SqlConnection connToDB2 = new SqlConnection(connectionString))
+            try 
             {
-                //open connection
-                connToDB2.Open();
+                using (SqlConnection connToDB2 = new SqlConnection(connectionString))
+                {
+                    //open connection
+                    connToDB2.Open();
 
-                SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, connToDB2);
-                //fills dataset
-                adapter.Fill(ds);
+                    SqlDataAdapter adapter = new SqlDataAdapter(sqlQuery, connToDB2);
+                    //fills dataset
+                    adapter.Fill(ds);
+                }
+                return ds;
             }
-            return ds;
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+            
         }
         //method to add peramiters from updateDB Form in DBExcludingUsers
         public void addToDB(string sqlQuery, int data0, string data1, string data2, int data3, int data4, string data5)
@@ -101,6 +110,78 @@ namespace LoginInterface
             }
         }
         // Observer design methods
+        private string[] GetColumnNames()
+        {
+            DataSet schema = DbConnector.GetInstanceOfDBConnector().getDataSet("SELECT TOP 0 * FROM Software");
+            return schema.Tables[0].Columns.Cast<DataColumn>().Select(c => c.ColumnName).ToArray();
+        }
+        public DataSet SearchAndFiltering(string searchText)
+        {
+            // Construct base SQL query
+            string query = "SELECT * FROM Software WHERE ";
+
+            // GetColumnNames method to retrieve column names
+            string[] columnNames = GetColumnNames();
+
+            for (int i = 0; i < columnNames.Length; i++)
+            {
+                if (i > 0)
+                {
+                    query += " OR ";
+                }
+                query += $"CONVERT(NVARCHAR(MAX), [{columnNames[i]}]) LIKE @searchText";
+            }
+
+            // Add parameter to query
+            SqlParameter parameter = new SqlParameter("@searchText", searchText);
+
+            // Execute query and fill the DataGridView
+            try
+            {
+                DataSet filteredData = new DataSet();
+                try
+                {
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        connection.Open();
+
+                        using (SqlCommand command = new SqlCommand(query, connection))
+                        {
+                            // Add parameter to query
+                            command.Parameters.Add(new SqlParameter("@searchText", searchText));
+
+                            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                            {
+                                // Fill the DataTable with the results
+                                adapter.Fill(filteredData);
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return null;
+                }
+
+                if (filteredData != null && filteredData.Tables.Count > 0)
+                {
+                    return filteredData;
+                }
+                else
+                {
+                    // No matching data found
+                    Console.WriteLine($"No matching data found for search: {searchText}");
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions, e.g., database connection issues
+                Console.WriteLine($"Error: {ex.Message}");
+                return null;
+            }
+        }
         public void AddDbObserver(IDbObserver observer)
         {
             observers.Add(observer);

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SearchFeature;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -42,6 +43,12 @@ namespace LoginInterface
         private void ViewFilesButton_Click(object sender, EventArgs e)
         {
             new FilesForm().Show();
+            this.Hide();
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            new SearchForm().Show();
             this.Hide();
         }
     }
