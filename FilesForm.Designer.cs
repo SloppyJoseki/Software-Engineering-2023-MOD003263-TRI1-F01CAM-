@@ -34,6 +34,7 @@
             this.DocumentViewer = new System.Windows.Forms.DataGridView();
             this.ViewButton = new System.Windows.Forms.Button();
             this.OpenButton = new System.Windows.Forms.Button();
+            this.Home = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DocumentViewer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,11 +96,22 @@
             this.OpenButton.UseVisualStyleBackColor = true;
             this.OpenButton.Click += new System.EventHandler(this.OpenButton_Click);
             // 
+            // Home
+            // 
+            this.Home.Location = new System.Drawing.Point(642, 156);
+            this.Home.Name = "Home";
+            this.Home.Size = new System.Drawing.Size(75, 23);
+            this.Home.TabIndex = 6;
+            this.Home.Text = "Home";
+            this.Home.UseVisualStyleBackColor = true;
+            this.Home.Click += new System.EventHandler(this.Home_Click);
+            // 
             // FilesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.Home);
             this.Controls.Add(this.OpenButton);
             this.Controls.Add(this.ViewButton);
             this.Controls.Add(this.DocumentViewer);
@@ -124,5 +136,6 @@
         private System.Windows.Forms.DataGridView DocumentViewer;
         private System.Windows.Forms.Button ViewButton;
         private System.Windows.Forms.Button OpenButton;
+        private System.Windows.Forms.Button Home;
     }
 }

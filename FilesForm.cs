@@ -59,5 +59,11 @@ namespace LoginInterface
                 DbConnector.GetInstanceOfDBConnector().OpenFile(id);
             }
         }
+
+        private void Home_Click(object sender, EventArgs e)
+        {
+            new Dashboard().Show();
+            this.Hide();
+        }
     }
 }
