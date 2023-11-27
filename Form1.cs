@@ -7,85 +7,77 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
-namespace Projectver1
+namespace SearchyTesty
 {
     public partial class Form1 : Form
     {
-        SqlConnection Con = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=D:\Daria\Projectver1\Projectver1\SoftwareBits.mdf;Integrated Security=True");
+
+        private DBConnection dbConn;
         public Form1()
         {
             InitializeComponent();
+
+            dbConn = DBConnection.getInstanceOfDBConnection();
         }
+
 
         public void fillGrid()
         {
-            Con.Open();
+            try
+            {
+                DataSet dataS = dbConn.getDataSet("SELECT * FROM Table");
+                dataGridView1.DataSource = dataS.Tables[0];
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error retrieving data:" + ex.Message);
+            }
 
-            string query = "SELECT * FROM Software_tbl";
-            SqlDataAdapter daAdapt = new SqlDataAdapter(query, Con);
-            SqlCommandBuilder sComBuild = new SqlCommandBuilder(daAdapt);
-            var dataS = new DataSet();
-            daAdapt.Fill(dataS);
-            dataGV.DataSource = dataS.Tables[0];
-
-            Con.Close();
         }
+
 
         public void textBoxFilter()
         {
-            Con.Open();
+            string searchText = searchBar.Text.Trim();
+            string query = $"SELECT * FROM Table WHERE Software_Name = 'searchText'";
+            DataSet dataS = dbConn.getDataSet(query);
+            dataGridView1.DataSource = dataS.Tables[0];
 
-            string query = "SELECT * FROM Software_tbl where SftName = '"+typeBox.Text+"'";
-            SqlDataAdapter daAdapt = new SqlDataAdapter(query, Con);
-            SqlCommandBuilder sComBuild = new SqlCommandBuilder(daAdapt);
-            var dataS = new DataSet();
-            daAdapt.Fill(dataS);
-            dataGV.DataSource = dataS.Tables[0];
-
-            Con.Close();
-        }
-
-        public void typeSoftwareFilter()
-        {
-            Con.Open();
-
-            string query = "SELECT * FROM Software_tbl where SftType = '" + typeSoftware.SelectedItem.ToString() + "'";
-            SqlDataAdapter daAdapt = new SqlDataAdapter(query, Con);
-            SqlCommandBuilder sComBuild = new SqlCommandBuilder(daAdapt);
-            var dataS = new DataSet();
-            daAdapt.Fill(dataS);
-            dataGV.DataSource = dataS.Tables[0];
-
-            Con.Close();
         }
 
 
-        private void label1_Click(object sender, EventArgs e)
+        public void comboSoftwareFilter()
         {
+            string selectedType = comboBox1.SelectedItem?.ToString();
+            if (selectedType != null)
+            {
+                string query = $"SELECT * FROM Table WHERE Cloud = 'selectedType'";
+                DataSet dataS = dbConn.getDataSet(query);
+                dataGridView1.DataSource = dataS.Tables[0];
+            }
 
+        }
+
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            textBoxFilter();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            typeSoftwareFilter();
+            comboSoftwareFilter();
+        }
+
+        private void searchBar_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             fillGrid();
-        }
-
-        private void btSearch_Click(object sender, EventArgs e)
-        {
-            textBoxFilter();
-        }
-
-        private void btRefresh_Click(object sender, EventArgs e)
-        {
-            fillGrid();
-            typeBox.Text = "";
         }
     }
 }
