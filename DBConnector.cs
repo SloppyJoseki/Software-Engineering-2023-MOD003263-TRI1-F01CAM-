@@ -20,14 +20,12 @@ namespace LoginInterface
         readonly private List<IDbObserver> observers = new List<IDbObserver>();
         private static DbConnector _instance;
         readonly private String connectionString;
-        readonly private String connectionString2;
 
 
         // Singleton design methods 
         private DbConnector()
         {
-            connectionString = Properties.Settings.Default.DBConnectionString;
-            connectionString2 = Properties.Settings.Default.DBExcludingUsersConnectionString;
+            connectionString = Properties.Settings.Default.DBExcludingUsersConnectionString;
         }
         public static DbConnector GetInstanceOfDBConnector()
         {
@@ -44,7 +42,7 @@ namespace LoginInterface
             //create a dataset
             DataSet ds = new DataSet();
 
-            using (SqlConnection connToDB2 = new SqlConnection(connectionString2))
+            using (SqlConnection connToDB2 = new SqlConnection(connectionString))
             {
                 //open connection
                 connToDB2.Open();
@@ -58,7 +56,7 @@ namespace LoginInterface
         //method to add peramiters from updateDB Form in DBExcludingUsers
         public void addToDB(string sqlQuery, int data0, string data1, string data2, int data3, int data4, string data5)
         {
-            using (SqlConnection connToDB2 = new SqlConnection(connectionString2))
+            using (SqlConnection connToDB2 = new SqlConnection(connectionString))
             {
                 connToDB2.Open();
 
@@ -82,7 +80,7 @@ namespace LoginInterface
         //method to update peramiters from updateDB Form in DBExcludingUsers
         public void updateToDB(string sqlQuery, int data0, string data1, string data2, int data3, int data4, string data5)
         {
-            using (SqlConnection connToDB2 = new SqlConnection(connectionString2))
+            using (SqlConnection connToDB2 = new SqlConnection(connectionString))
             {
                 connToDB2.Open();
 

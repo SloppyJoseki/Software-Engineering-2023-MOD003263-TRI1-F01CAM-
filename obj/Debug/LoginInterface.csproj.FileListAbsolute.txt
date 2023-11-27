@@ -34,3 +34,21 @@ C:\Users\cjfly\OneDrive\Desktop\software engineering\code\part1\Software-Enginee
 C:\Users\cjfly\OneDrive\Desktop\software engineering\code\part1\Software-Engineering-2023-MOD003263-TRI1-F01CAM--Lets-see-if-this-works\obj\Debug\LoginInterface.csproj.CoreCompileInputs.cache
 C:\Users\cjfly\OneDrive\Desktop\software engineering\code\part1\Software-Engineering-2023-MOD003263-TRI1-F01CAM--Lets-see-if-this-works\obj\Debug\LoginInterface.exe
 C:\Users\cjfly\OneDrive\Desktop\software engineering\code\part1\Software-Engineering-2023-MOD003263-TRI1-F01CAM--Lets-see-if-this-works\obj\Debug\LoginInterface.pdb
+C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-\bin\Debug\DBExcludingUsers.mdf
+C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-\bin\Debug\DBExcludingUsers_log.ldf
+C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-\bin\Debug\LoginInterface.exe.config
+C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-\bin\Debug\LoginInterface.exe
+C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-\bin\Debug\LoginInterface.pdb
+C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-\obj\Debug\LoginInterface.csproj.AssemblyReference.cache
+C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-\obj\Debug\LoginInterface.AccountCreation.resources
+C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-\obj\Debug\LoginInterface.Dashboard.resources
+C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-\obj\Debug\LoginInterface.EditForm.resources
+C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-\obj\Debug\LoginInterface.FilesForm.resources
+C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-\obj\Debug\LoginInterface.LoginForm.resources
+C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-\obj\Debug\LoginInterface.Properties.Resources.resources
+C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-\obj\Debug\LoginInterface.RegistrationCodeForm.resources
+C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-\obj\Debug\LoginInterface.updateDB.resources
+C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-\obj\Debug\LoginInterface.csproj.GenerateResource.cache
+C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-\obj\Debug\LoginInterface.csproj.CoreCompileInputs.cache
+C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-\obj\Debug\LoginInterface.exe
+C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-\obj\Debug\LoginInterface.pdb
