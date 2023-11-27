@@ -86,7 +86,6 @@ namespace LoginInterface
             this.companyTableAdapter.Fill(this.dBExcludingUsersDataSet.Company);
 
         }
-
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DGV.DataSource = dataTable;
@@ -95,13 +94,14 @@ namespace LoginInterface
             //auto generate the columns
             DGV.AutoGenerateColumns = true;
 
+
             //sends user to update form so they can update the row they selected
             if (e.ColumnIndex == 0 && e.RowIndex >= 0)
             {
 
-                // Create a new form or use the data retrieved to open a new form
-                // For example, open a new form with the selected data
-                updateDB form_update = new updateDB();
+                    // Create a new form or use the data retrieved to open a new form
+                    // For example, open a new form with the selected data
+                    updateDB form_update = new updateDB();
                 form_update.Show();
                 this.Hide(); // Close the UpdateForm after updating
 

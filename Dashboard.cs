@@ -39,7 +39,7 @@ namespace LoginInterface
             }
         }
 
-        private void viewFilesButton_Click(object sender, EventArgs e)
+        private void ViewFilesButton_Click(object sender, EventArgs e)
         {
             new FilesForm().Show();
             this.Hide();

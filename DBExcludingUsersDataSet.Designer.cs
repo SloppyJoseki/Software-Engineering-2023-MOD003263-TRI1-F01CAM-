@@ -2068,7 +2068,7 @@ namespace LoginInterface {
             
             private global::System.Data.DataColumn columnCompany_name;
             
-            private global::System.Data.DataColumn columnCompany_wedsite;
+            private global::System.Data.DataColumn columnCompany_website;
             
             private global::System.Data.DataColumn columnCompany_established;
             
@@ -2127,9 +2127,9 @@ namespace LoginInterface {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public global::System.Data.DataColumn Company_wedsiteColumn {
+            public global::System.Data.DataColumn Company_websiteColumn {
                 get {
-                    return this.columnCompany_wedsite;
+                    return this.columnCompany_website;
                 }
             }
             
@@ -2234,7 +2234,7 @@ namespace LoginInterface {
             internal void InitVars() {
                 this.columnCompany_ID = base.Columns["Company_ID"];
                 this.columnCompany_name = base.Columns["Company_name"];
-                this.columnCompany_wedsite = base.Columns["Company_website"];
+                this.columnCompany_website = base.Columns["Company_website"];
                 this.columnCompany_established = base.Columns["Company_established"];
                 this.columnEmployees_no = base.Columns["No_of_Employees"];
                 this.columnInternal_Professional_Services = base.Columns["Internal_Professional_Services"];
@@ -2247,11 +2247,11 @@ namespace LoginInterface {
                 base.Columns.Add(this.columnCompany_ID);
                 this.columnCompany_name = new global::System.Data.DataColumn("Company_name", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCompany_name);
-                this.columnCompany_wedsite = new global::System.Data.DataColumn("Company_website", typeof(string), null, global::System.Data.MappingType.Element);
-                this.columnCompany_wedsite.ExtendedProperties.Add("Generator_ColumnPropNameInTable", "Company_wedsiteColumn");
-                this.columnCompany_wedsite.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "columnCompany_wedsite");
-                this.columnCompany_wedsite.ExtendedProperties.Add("Generator_UserColumnName", "Company_website");
-                base.Columns.Add(this.columnCompany_wedsite);
+                this.columnCompany_website = new global::System.Data.DataColumn("Company_website", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnCompany_website.ExtendedProperties.Add("Generator_ColumnPropNameInTable", "Company_websiteColumn");
+                this.columnCompany_website.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "columnCompany_website");
+                this.columnCompany_website.ExtendedProperties.Add("Generator_UserColumnName", "Company_website");
+                base.Columns.Add(this.columnCompany_website);
                 this.columnCompany_established = new global::System.Data.DataColumn("Company_established", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCompany_established);
                 this.columnEmployees_no = new global::System.Data.DataColumn("No_of_Employees", typeof(int), null, global::System.Data.MappingType.Element);
@@ -2266,7 +2266,7 @@ namespace LoginInterface {
                 this.columnCompany_ID.AllowDBNull = false;
                 this.columnCompany_ID.Unique = true;
                 this.columnCompany_name.MaxLength = 50;
-                this.columnCompany_wedsite.MaxLength = 200;
+                this.columnCompany_website.MaxLength = 200;
                 this.columnInternal_Professional_Services.MaxLength = 2147483647;
             }
             
@@ -4913,14 +4913,14 @@ namespace LoginInterface {
             public string Company_website {
                 get {
                     try {
-                        return ((string)(this[this.tableCompany.Company_wedsiteColumn]));
+                        return ((string)(this[this.tableCompany.Company_websiteColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Company_website\' in table \'Company\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableCompany.Company_wedsiteColumn] = value;
+                    this[this.tableCompany.Company_websiteColumn] = value;
                 }
             }
             
@@ -4988,13 +4988,13 @@ namespace LoginInterface {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsCompany_websiteNull() {
-                return this.IsNull(this.tableCompany.Company_wedsiteColumn);
+                return this.IsNull(this.tableCompany.Company_websiteColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetCompany_websiteNull() {
-                this[this.tableCompany.Company_wedsiteColumn] = global::System.Convert.DBNull;
+                this[this.tableCompany.Company_websiteColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7258,13 +7258,13 @@ namespace LoginInterface.DBExcludingUsersDataSetTableAdapters {
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Company] WHERE (([Company_ID] = @Original_Company_ID) AND ((@IsNull_Company_name = 1 AND [Company_name] IS NULL) OR ([Company_name] = @Original_Company_name)) AND ((@IsNull_Company_wedsite = 1 AND [Company_website] IS NULL) OR ([Company_website] = @Original_Company_wedsite)) AND ((@IsNull_Company_established = 1 AND [Company_established] IS NULL) OR ([Company_established] = @Original_Company_established)) AND ((@IsNull_Employees_no = 1 AND [No_of_Employees] IS NULL) OR ([No_of_Employees] = @Original_Employees_no)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Company] WHERE (([Company_ID] = @Original_Company_ID) AND ((@IsNull_Company_name = 1 AND [Company_name] IS NULL) OR ([Company_name] = @Original_Company_name)) AND ((@IsNull_Company_website = 1 AND [Company_website] IS NULL) OR ([Company_website] = @Original_Company_website)) AND ((@IsNull_Company_established = 1 AND [Company_established] IS NULL) OR ([Company_established] = @Original_Company_established)) AND ((@IsNull_Employees_no = 1 AND [No_of_Employees] IS NULL) OR ([No_of_Employees] = @Original_Employees_no)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Company_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Company_ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Company_name", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Company_name", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Company_name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Company_name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Company_wedsite", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Company_website", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Company_wedsite", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Company_website", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Company_website", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Company_website", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Company_website", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Company_website", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Company_established", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Company_established", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Company_established", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Company_established", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Employees_no", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "No_of_Employees", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -7282,7 +7282,7 @@ SELECT Company_ID, Company_name, Company_website, Company_established, No_of_Emp
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Internal_Professional_Services", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Internal_Professional_Services", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Company] SET [Company_ID] = @Company_ID, [Company_name] = @Company_name, [Company_website] = @Company_website, [Company_established] = @Company_established, [No_of_Employees] = @No_of_Employees, [Internal_Professional_Services] = @Internal_Professional_Services WHERE (([Company_ID] = @Original_Company_ID) AND ((@IsNull_Company_name = 1 AND [Company_name] IS NULL) OR ([Company_name] = @Original_Company_name)) AND ((@IsNull_Company_wedsite = 1 AND [Company_website] IS NULL) OR ([Company_website] = @Original_Company_wedsite)) AND ((@IsNull_Company_established = 1 AND [Company_established] IS NULL) OR ([Company_established] = @Original_Company_established)) AND ((@IsNull_Employees_no = 1 AND [No_of_Employees] IS NULL) OR ([No_of_Employees] = @Original_Employees_no)));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Company] SET [Company_ID] = @Company_ID, [Company_name] = @Company_name, [Company_website] = @Company_website, [Company_established] = @Company_established, [No_of_Employees] = @No_of_Employees, [Internal_Professional_Services] = @Internal_Professional_Services WHERE (([Company_ID] = @Original_Company_ID) AND ((@IsNull_Company_name = 1 AND [Company_name] IS NULL) OR ([Company_name] = @Original_Company_name)) AND ((@IsNull_Company_website = 1 AND [Company_website] IS NULL) OR ([Company_website] = @Original_Company_website)) AND ((@IsNull_Company_established = 1 AND [Company_established] IS NULL) OR ([Company_established] = @Original_Company_established)) AND ((@IsNull_Employees_no = 1 AND [No_of_Employees] IS NULL) OR ([No_of_Employees] = @Original_Employees_no)));
 SELECT Company_ID, Company_name, Company_website, Company_established, No_of_Employees, Internal_Professional_Services FROM Company WHERE (Company_ID = @Company_ID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Company_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Company_ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -7294,8 +7294,8 @@ SELECT Company_ID, Company_name, Company_website, Company_established, No_of_Emp
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Company_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Company_ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Company_name", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Company_name", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Company_name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Company_name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Company_wedsite", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Company_website", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Company_wedsite", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Company_website", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Company_website", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Company_website", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Company_website", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Company_website", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Company_established", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Company_established", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Company_established", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Company_established", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Employees_no", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "No_of_Employees", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -7377,7 +7377,7 @@ SELECT Company_ID, Company_name, Company_website, Company_established, No_of_Emp
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Company_ID, string Original_Company_name, string Original_Company_wedsite, global::System.Nullable<int> Original_Company_established, global::System.Nullable<int> Original_Employees_no) {
+        public virtual int Delete(int Original_Company_ID, string Original_Company_name, string Original_Company_website, global::System.Nullable<int> Original_Company_established, global::System.Nullable<int> Original_Employees_no) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Company_ID));
             if ((Original_Company_name == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
@@ -7387,13 +7387,13 @@ SELECT Company_ID, Company_name, Company_website, Company_established, No_of_Emp
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Company_name));
             }
-            if ((Original_Company_wedsite == null)) {
+            if ((Original_Company_website == null)) {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Company_wedsite));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Company_website));
             }
             if ((Original_Company_established.HasValue == true)) {
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((object)(0));
@@ -7483,7 +7483,7 @@ SELECT Company_ID, Company_name, Company_website, Company_established, No_of_Emp
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Company_ID, string Company_name, string Company_website, global::System.Nullable<int> Company_established, global::System.Nullable<int> No_of_Employees, string Internal_Professional_Services, int Original_Company_ID, string Original_Company_name, string Original_Company_wedsite, global::System.Nullable<int> Original_Company_established, global::System.Nullable<int> Original_Employees_no) {
+        public virtual int Update(int Company_ID, string Company_name, string Company_website, global::System.Nullable<int> Company_established, global::System.Nullable<int> No_of_Employees, string Internal_Professional_Services, int Original_Company_ID, string Original_Company_name, string Original_Company_website, global::System.Nullable<int> Original_Company_established, global::System.Nullable<int> Original_Employees_no) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Company_ID));
             if ((Company_name == null)) {
                 this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
@@ -7524,13 +7524,13 @@ SELECT Company_ID, Company_name, Company_website, Company_established, No_of_Emp
                 this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_Company_name));
             }
-            if ((Original_Company_wedsite == null)) {
+            if ((Original_Company_website == null)) {
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_Company_wedsite));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_Company_website));
             }
             if ((Original_Company_established.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
@@ -7568,8 +7568,8 @@ SELECT Company_ID, Company_name, Company_website, Company_established, No_of_Emp
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Company_name, string Company_website, global::System.Nullable<int> Company_established, global::System.Nullable<int> No_of_Employees, string Internal_Professional_Services, int Original_Company_ID, string Original_Company_name, string Original_Company_wedsite, global::System.Nullable<int> Original_Company_established, global::System.Nullable<int> Original_Employees_no) {
-            return this.Update(Original_Company_ID, Company_name, Company_website, Company_established, No_of_Employees, Internal_Professional_Services, Original_Company_ID, Original_Company_name, Original_Company_wedsite, Original_Company_established, Original_Employees_no);
+        public virtual int Update(string Company_name, string Company_website, global::System.Nullable<int> Company_established, global::System.Nullable<int> No_of_Employees, string Internal_Professional_Services, int Original_Company_ID, string Original_Company_name, string Original_Company_website, global::System.Nullable<int> Original_Company_established, global::System.Nullable<int> Original_Employees_no) {
+            return this.Update(Original_Company_ID, Company_name, Company_website, Company_established, No_of_Employees, Internal_Professional_Services, Original_Company_ID, Original_Company_name, Original_Company_website, Original_Company_established, Original_Employees_no);
         }
     }
     

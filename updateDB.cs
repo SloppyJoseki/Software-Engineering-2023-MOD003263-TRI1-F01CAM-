@@ -49,6 +49,7 @@ namespace LoginInterface
                     int data3 = Convert.ToInt32(textBox3.Text);
                     int data4 = Convert.ToInt32(textBox4.Text);
                     string data5 = textBox5.Text;
+                    //sets up sql query to change data in specified row
                     dbconn.addToDB("INSERT INTO Company"+
                                     "(Company_ID, Company_name, Company_website, Company_established, "+
                                     "   No_of_Employees, Internal_Professional_Services) "+ 
@@ -105,7 +106,7 @@ namespace LoginInterface
                 int data3 = Convert.ToInt32(textBox3.Text);
                 int data4 = Convert.ToInt32(textBox4.Text);
                 string data5 = textBox5.Text;
-                //sets up sql query to change data in specified row
+                //sets up sql query to update data in specified row
                 dbconn.updateToDB("UPDATE Company " +
                                        "SET Company_name = @CompanyName, " +
                                        "    Company_website = @CompanyWebsite, " +

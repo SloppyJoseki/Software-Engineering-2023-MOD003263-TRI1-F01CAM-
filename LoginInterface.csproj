@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -48,7 +48,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -75,6 +77,12 @@
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
     <Compile Include="DBConnector.cs" />
+    <Compile Include="DBExcludingUsersDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBExcludingUsersDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DbObserver.cs" />
     <Compile Include="EditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -87,6 +95,10 @@
     <Compile Include="FilesForm.Designer.cs">
       <DependentUpon>FilesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces.cs" />
+    <Compile Include="LoggedInAs.cs" />
+    <Compile Include="LoggerBase.cs" />
+    <Compile Include="LoggerHelper.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +112,12 @@
     </Compile>
     <Compile Include="RegistrationCodeForm.Designer.cs">
       <DependentUpon>RegistrationCodeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="updateDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="updateDB.Designer.cs">
+      <DependentUpon>updateDB.cs</DependentUpon>
     </Compile>
     <Compile Include="UserRegistrationManager.cs" />
     <EmbeddedResource Include="AccountCreation.resx">
@@ -129,6 +147,20 @@
     <EmbeddedResource Include="RegistrationCodeForm.resx">
       <DependentUpon>RegistrationCodeForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="updateDB.resx">
+      <DependentUpon>updateDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="DBExcludingUsersDataSet.xsc">
+      <DependentUpon>DBExcludingUsersDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DBExcludingUsersDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DBExcludingUsersDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DBExcludingUsersDataSet.xss">
+      <DependentUpon>DBExcludingUsersDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -143,12 +175,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Users.mdf">
+    <Content Include="DBExcludingUsers.mdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Users_log.ldf">
-      <DependentUpon>Users.mdf</DependentUpon>
+    <Content Include="DBExcludingUsers_log.ldf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <DependentUpon>DBExcludingUsers.mdf</DependentUpon>
     </Content>
   </ItemGroup>
   <ItemGroup>

@@ -36,6 +36,8 @@ namespace LoginInterface
 
         private void CreateAccount_Click(object sender, EventArgs e)
         {
+            LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+            Constants_Functions.LogInformation());
             this.Hide();
             new AccountCreation().Show();
         }
@@ -50,15 +52,19 @@ namespace LoginInterface
            byte[] userSalt = DbConnector.GetInstanceOfDBConnector().CheckEmailGetSalt(UsernameBox.Text);
            bool isLogin = DbConnector.GetInstanceOfDBConnector().CheckUserPassword(UsernameBox.Text, PasswordBox.Text, userSalt);
            if (isLogin)
-            {
+           {
+                LoggedInAs.GetInstanceOfLoggedInAs().CurrentUserEmail = UsernameBox.Text;
+                LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                Constants_Functions.LogInformation( "UsernameBox.Text: " + UsernameBox.Text));
                 this.Hide();
                 new Dashboard().Show();
-            }
+           }
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
-
+            // Instantly create the list of Db observers on launch
+            DbConnector.GetInstanceOfDBConnector().GetObserverList();
         }
 
         private void LoginForm_FormClosing(object sender, FormClosingEventArgs e)
