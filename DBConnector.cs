@@ -18,6 +18,7 @@ namespace LoginInterface
 {
     class DbConnector : IDBConnector
     {
+        // Attributes
         readonly private List<IDbObserver> observers = new List<IDbObserver>();
         private static DbConnector _instance;
         readonly private String connectionString;
@@ -33,10 +34,13 @@ namespace LoginInterface
             if (_instance == null)
             {
                 _instance = new DbConnector();
+                LoggerHelper.Log(Constants_Functions.LogEndpoint.File, Constants_Functions.LogInformation());
                 return _instance;
             }
+            LoggerHelper.Log(Constants_Functions.LogEndpoint.File, Constants_Functions.LogInformation());
             return _instance;
         }
+
         //method to load table from DBExcludingUsers
         public DataSet getDataSet(string sqlQuery)
         {
@@ -112,17 +116,22 @@ namespace LoginInterface
         // Observer design methods
         private string[] GetColumnNames()
         {
+            //Get an empty dataset with the structure of the software table
             DataSet schema = DbConnector.GetInstanceOfDBConnector().getDataSet("SELECT TOP 0 * FROM Software");
+
+            //Extract column names from dataset schema
             return schema.Tables[0].Columns.Cast<DataColumn>().Select(c => c.ColumnName).ToArray();
         }
+
         public DataSet SearchAndFiltering(string searchText)
         {
-            // Construct base SQL query
+            //Construct base SQL query
             string query = "SELECT * FROM Software WHERE ";
 
-            // GetColumnNames method to retrieve column names
+            //GetColumnNames method to retrieve column names
             string[] columnNames = GetColumnNames();
 
+            //Append conditions for each column in Where clause
             for (int i = 0; i < columnNames.Length; i++)
             {
                 if (i > 0)
@@ -132,27 +141,31 @@ namespace LoginInterface
                 query += $"CONVERT(NVARCHAR(MAX), [{columnNames[i]}]) LIKE @searchText";
             }
 
-            // Add parameter to query
+            //Create param for searchtext
             SqlParameter parameter = new SqlParameter("@searchText", searchText);
 
-            // Execute query and fill the DataGridView
+
             try
             {
+                //Initialize dataset to store filtered data
                 DataSet filteredData = new DataSet();
                 try
                 {
+                    //Connect to database w sqlconnection
                     using (SqlConnection connection = new SqlConnection(connectionString))
                     {
                         connection.Open();
 
+                        //sqlcmd execute query
                         using (SqlCommand command = new SqlCommand(query, connection))
                         {
-                            // Add parameter to query
+                            //Add searchtxt param to cmd
                             command.Parameters.Add(new SqlParameter("@searchText", searchText));
 
+                            //Use sqldataadapter to fill datatable w results
                             using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                             {
-                                // Fill the DataTable with the results
+                                //Fill datatable with the results
                                 adapter.Fill(filteredData);
                             }
                         }
@@ -160,12 +173,14 @@ namespace LoginInterface
                 }
                 catch (Exception ex)
                 {
+                    //Handle exceptions
                     MessageBox.Show(ex.Message);
                     return null;
                 }
 
                 if (filteredData != null && filteredData.Tables.Count > 0)
                 {
+                    //Return filtered data
                     return filteredData;
                 }
                 else
@@ -177,30 +192,38 @@ namespace LoginInterface
             }
             catch (Exception ex)
             {
-                // Handle any exceptions, e.g., database connection issues
-                Console.WriteLine($"Error: {ex.Message}");
+                MessageBox.Show(ex.Message);
                 return null;
             }
         }
+
+
         public void AddDbObserver(IDbObserver observer)
         {
+            // Adds an observer to the list so they can be updated
             observers.Add(observer);
+            LoggerHelper.Log(Constants_Functions.LogEndpoint.File, Constants_Functions.LogInformation());
         }
         public void RemoveDbObserver(IDbObserver observer)
         {
+            // Removes an observer that no longer wishes to get updates
             observers.Remove(observer);
+            LoggerHelper.Log(Constants_Functions.LogEndpoint.File, Constants_Functions.LogInformation());
         }
         public void NotifyDbObservers(string message)
         {
+            // Loops through the list of observers and sends them each an email
             foreach (var observer in observers)
             {
                 observer.Update(message);
             }
+            LoggerHelper.Log(Constants_Functions.LogEndpoint.File, Constants_Functions.LogInformation(message));
         }
 
         // Get the list of observers
         public void GetObserverList()
         {
+            // On startup generates a list of all the observers from the database
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 using (SqlCommand command = new SqlCommand(Constants_Functions.ObserversQuery, connection))
@@ -213,6 +236,7 @@ namespace LoginInterface
                             string email = reader["Email"].ToString();
                             AddDbObserver(new DbObserver(email));
                         }
+                        LoggerHelper.Log(Constants_Functions.LogEndpoint.File, Constants_Functions.LogInformation());
                     }                   
                 }
             }
@@ -239,11 +263,15 @@ namespace LoginInterface
                         if (reader.Read())
                         {
                             userSalt = (byte[])reader["Salt"];
+                            LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                            Constants_Functions.LogInformation(email));
                             return userSalt;
                         }
                         else
                         {
                             MessageBox.Show("Email not found in the database soz");
+                            LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                            Constants_Functions.LogInformation(email));
                             return userSalt;
                         }
                     }   
@@ -252,6 +280,8 @@ namespace LoginInterface
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
+                LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                Constants_Functions.LogInformation(email, ex.Message));
                 return userSalt;
             }
         }
@@ -279,17 +309,23 @@ namespace LoginInterface
                             if (!storedPassword.SequenceEqual(hashedPassword))
                             {
                                 MessageBox.Show("Password wrong sorry mate");
+                                LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                                Constants_Functions.LogInformation(email, "passwords not equal"));
                                 return false;
                             }
                             else
                             {
                                 MessageBox.Show("I'm in");
+                                LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                                Constants_Functions.LogInformation(email, "Return true"));
                                 return true;
                             }
                         }
                         else
                         {
                             MessageBox.Show("Password wrong soz");
+                            LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                            Constants_Functions.LogInformation(email, "error"));
                             return false;
                         }
                     }
@@ -298,6 +334,8 @@ namespace LoginInterface
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
+                LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                Constants_Functions.LogInformation(email, ex.Message));
                 return false;
             }
         }
@@ -314,6 +352,8 @@ namespace LoginInterface
                     sqlCommand.Parameters.Add(new SqlParameter("@Email", email));
                     using (SqlDataReader reader = sqlCommand.ExecuteReader())
                     {
+                        LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                        Constants_Functions.LogInformation(email, reader.HasRows));
                         return reader.HasRows;
                     }
                 }
@@ -321,6 +361,8 @@ namespace LoginInterface
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
+                LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                Constants_Functions.LogInformation(email, ex.Message));
                 return false;
             }
 
@@ -346,6 +388,8 @@ namespace LoginInterface
                     sqlCommand.Parameters.Add(new SqlParameter("@Is_Db_Observer", SqlDbType.Bit) { Value = false });
                     sqlCommand.ExecuteNonQuery();
                     MessageBox.Show("Task failed successfully");
+                    LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                    Constants_Functions.LogInformation(email, userSalt));
                     connection.Close();
                 }
             }
@@ -353,6 +397,8 @@ namespace LoginInterface
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
+                LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                Constants_Functions.LogInformation(email, ex.Message));
             }
         }
         public void SaveFile(string filePath)
@@ -380,12 +426,16 @@ namespace LoginInterface
                         LoggedInAs.GetInstanceOfLoggedInAs().CurrentUserEmail + " it is named: " +
                         fileName;
                         NotifyDbObservers(fileSavedNotification);
+                        LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                        Constants_Functions.LogInformation(filePath));
                     }
 
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: " + ex.Message);
+                    LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                    Constants_Functions.LogInformation(ex.Message));
                 }
             }
         }
@@ -412,6 +462,9 @@ namespace LoginInterface
 
                             File.WriteAllBytes(newFileName, data);
                             System.Diagnostics.Process.Start(newFileName);
+
+                            LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                            Constants_Functions.LogInformation(id));
                         }
                     }
                 }
@@ -420,6 +473,8 @@ namespace LoginInterface
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
+                LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                Constants_Functions.LogInformation(ex.Message));
             }
         }
         public DataTable DisplayFileData()
@@ -433,7 +488,9 @@ namespace LoginInterface
                 using (SqlDataAdapter dataAdapter = new SqlDataAdapter(fileDataQuery, connection))
                 {
                     DataTable dt = new DataTable();
-                    dataAdapter.Fill(dt); 
+                    dataAdapter.Fill(dt);
+                    LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                    Constants_Functions.LogInformation());
                     return dt;
                 }
 
@@ -441,6 +498,8 @@ namespace LoginInterface
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
+                LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                Constants_Functions.LogInformation(ex.Message));
                 return null;
             }
         }
@@ -462,11 +521,15 @@ namespace LoginInterface
                         sqlCommand.Parameters.Add(new SqlParameter("@fileData", fileData));
                         sqlCommand.Parameters.Add(new SqlParameter("@Email", email));
                         sqlCommand.ExecuteNonQuery();
+                        LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                        Constants_Functions.LogInformation(filePath, email));
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error: " + ex.Message);
+                    LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                    Constants_Functions.LogInformation(ex.Message));
                 }
             }
         }

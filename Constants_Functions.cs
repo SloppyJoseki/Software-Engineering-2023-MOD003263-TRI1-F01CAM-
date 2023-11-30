@@ -90,6 +90,8 @@ namespace LoginInterface
             // This function uses pbkdf2 with a salt in order to hash the users password
             using (Rfc2898DeriveBytes pbkdf2 = new Rfc2898DeriveBytes(password, salt, 1000))
             {
+                LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                Constants_Functions.LogInformation(salt));
                 return pbkdf2.GetBytes(32);
             }
         }

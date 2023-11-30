@@ -1,0 +1,260 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
+  <Class Name="LoginInterface.AccountCreation" Collapsed="true">
+    <Position X="7" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACgEAAAAIACJAAICAAAAQAQEAAAEECRAAAA=</HashCode>
+      <FileName>AccountCreation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.Constants_Functions" Collapsed="true">
+    <Position X="8.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAEAAAACAAEAAAIAAAAAAAkAQQACEAAAAA=</HashCode>
+      <FileName>Constants_Functions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.Dashboard" Collapsed="true">
+    <Position X="14" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAACAAAABAgACAAAACAAAAgAAAAIAAIAAAQgA=</HashCode>
+      <FileName>Dashboard.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.DbConnector" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAMAAAACAABAAgAEAAAAAAAAABwAUACBgGKAACAAAA=</HashCode>
+      <FileName>DBConnector.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="LoginInterface.DBExcludingUsersDataSet" Collapsed="true">
+    <Position X="7" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EABAAQAYQ0UQKQJMhAEAQAgBkAoCQRgDCICADiUAlhA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.DbObserver" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>DbObserver.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="LoginInterface.EditForm" Collapsed="true">
+    <Position X="10.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgEAAAAhCBAABAQAACAACACAAAocA8CBAAAIQAAAAI=</HashCode>
+      <FileName>EditForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.FilesForm" Collapsed="true">
+    <Position X="12.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAIEAAAQCAQAAAAEAiAQEgCAAQAAAAAAAABAAEAAAg=</HashCode>
+      <FileName>FilesForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.LoggedInAs" Collapsed="true">
+    <Position X="7" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAIAAAA=</HashCode>
+      <FileName>LoggedInAs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.LoggerBase" Collapsed="true">
+    <Position X="3.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LoggerBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.FileLogger" Collapsed="true">
+    <Position X="2.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>LoggerBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.DBLogger" Collapsed="true">
+    <Position X="4.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAgAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>LoggerBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.LoggerHelper" Collapsed="true">
+    <Position X="8.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>LoggerHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.LoginForm" Collapsed="true">
+    <Position X="14" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAQAQGAEAAAAAACIAAACgAAAAAQGAICAAIAgCAA=</HashCode>
+      <FileName>LoginForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.Program" Collapsed="true">
+    <Position X="7" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="LoggedInAs" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="LoginInterface.RegistrationCodeForm" Collapsed="true">
+    <Position X="8.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAEAAAACAAAABggACAAAACAgAAAAAAAQQAhgEAAAA=</HashCode>
+      <FileName>RegistrationCodeForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.updateDB" Collapsed="true">
+    <Position X="8.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gCIAAAUAATAAEBAABACAABBCIAAEAAAgEGCAAQAEAAA=</HashCode>
+      <FileName>updateDB.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.UserRegistrationManager" Collapsed="true">
+    <Position X="10.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAACAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>UserRegistrationManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="LoginForm" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="LoginInterface.DBExcludingUsersDataSetTableAdapters.AddressTableAdapter" Collapsed="true">
+    <Position X="8.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.DBExcludingUsersDataSetTableAdapters.BusinessTableAdapter" Collapsed="true">
+    <Position X="12.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.DBExcludingUsersDataSetTableAdapters.Business_Linking_TableTableAdapter" Collapsed="true">
+    <Position X="10.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.DBExcludingUsersDataSetTableAdapters.CityTableAdapter" Collapsed="true">
+    <Position X="15.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.DBExcludingUsersDataSetTableAdapters.City_Linking_TablETableAdapter" Collapsed="true">
+    <Position X="14" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.DBExcludingUsersDataSetTableAdapters.CompanyTableAdapter" Collapsed="true">
+    <Position X="7" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACEICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.DBExcludingUsersDataSetTableAdapters.CountryTableAdapter" Collapsed="true">
+    <Position X="12.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.DBExcludingUsersDataSetTableAdapters.Country_Linking_TableTableAdapter" Collapsed="true">
+    <Position X="10.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.DBExcludingUsersDataSetTableAdapters.Financial_ServicesTableAdapter" Collapsed="true">
+    <Position X="15.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.DBExcludingUsersDataSetTableAdapters.Financial_Services_Linking_TableTableAdapter" Collapsed="true">
+    <Position X="14" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.DBExcludingUsersDataSetTableAdapters.ModuleTableAdapter" Collapsed="true">
+    <Position X="14" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.DBExcludingUsersDataSetTableAdapters.Module_Linking_TableTableAdapter" Collapsed="true">
+    <Position X="12.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.DBExcludingUsersDataSetTableAdapters.Phone_numberTableAdapter" Collapsed="true">
+    <Position X="15.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.DBExcludingUsersDataSetTableAdapters.SoftwareTableAdapter" Collapsed="true">
+    <Position X="15.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EASAAGAAEAAAAAcAIAAAAAAAACAICAAAAAAAAAAABBA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.DBExcludingUsersDataSetTableAdapters.TableAdapterManager" Collapsed="true">
+    <Position X="7" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AwAQAGkADGBABAExAAABsIAgAAACgAKgAAwAiBAAjAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.Properties.Resources" Collapsed="true">
+    <Position X="10.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="LoginInterface.Properties.Settings" Collapsed="true">
+    <Position X="14" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAABBIAAAACAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SearchFeature.SearchForm" Collapsed="true">
+    <Position X="12.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAACAgAAIAQACAIAAKAAgiAAAAAAATAABgAAA=</HashCode>
+      <FileName>SearchForm.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="LoginInterface.IDbObserver" Collapsed="true">
+    <Position X="8.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="LoginInterface.IDBConnector" Collapsed="true">
+    <Position X="7" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAABAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

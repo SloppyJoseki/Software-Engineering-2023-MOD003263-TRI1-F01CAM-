@@ -95,6 +95,12 @@
     <Compile Include="FilesForm.Designer.cs">
       <DependentUpon>FilesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Form2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.cs">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Interfaces.cs" />
     <Compile Include="LoggedInAs.cs" />
     <Compile Include="LoggerBase.cs" />
@@ -138,6 +144,9 @@
     <EmbeddedResource Include="FilesForm.resx">
       <DependentUpon>FilesForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -179,6 +188,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Test.cd" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

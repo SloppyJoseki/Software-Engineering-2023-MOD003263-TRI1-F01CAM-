@@ -38,10 +38,15 @@ namespace LoginInterface
                         mail.Subject = "Someone has updated the Database";
                         mail.Body = message;
                         smtpClient.Send(mail);
+
+                        LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                        Constants_Functions.LogInformation(message));
                     }
                     catch
                     {
                         MessageBox.Show("Error updating user: " + userEmail);
+                        LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                        Constants_Functions.LogInformation());
                     }
                 }
             }

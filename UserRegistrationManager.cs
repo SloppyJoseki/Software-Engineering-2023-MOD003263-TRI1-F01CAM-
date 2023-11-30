@@ -12,10 +12,21 @@ namespace LoginInterface
 {
     internal class UserRegistrationManager
     {
+        public LoginForm LoginForm
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public string GenerateRegistrationCode()
         {
             Random generator = new Random();
             String registrationCode = generator.Next(0, 1000000).ToString("D6");
+
+            LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+            Constants_Functions.LogInformation(registrationCode));
             return registrationCode;
         }
 
@@ -24,6 +35,9 @@ namespace LoginInterface
             if (DbConnector.GetInstanceOfDBConnector().IsEmailTaken(targetEmail))
             {
                 MessageBox.Show("Sorry that email is already in use");
+
+                LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                Constants_Functions.LogInformation(targetEmail, authCode));
                 return false;
             }
             string senderEmail = "ThisIsForMyUniProject@gmail.com";
@@ -44,11 +58,17 @@ namespace LoginInterface
                         mail.Body = "Hello your authentication code is: " + authCode;
                         smtpClient.Send(mail);
                         MessageBox.Show("Sent");
+
+                        LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                        Constants_Functions.LogInformation(senderEmail, authCode, "email sent"));
                         return true;
                     }
                     catch
                     {
                         MessageBox.Show("Failed to send email please enter a valid email address");
+
+                        LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                        Constants_Functions.LogInformation(senderEmail, authCode, "email not sent"));
                         return false;
                     }
                 }
@@ -61,6 +81,9 @@ namespace LoginInterface
             {
                 byte[] salt = new byte[length];
                 rng.GetBytes(salt);
+
+                LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
+                Constants_Functions.LogInformation(salt));
                 return salt;
             }
         }

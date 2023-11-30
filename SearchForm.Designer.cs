@@ -34,6 +34,7 @@
             this.comboBoxType = new System.Windows.Forms.ComboBox();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.comboBoxCloud = new System.Windows.Forms.ComboBox();
+            this.buttonRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,6 +48,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(877, 338);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick_1);
             // 
             // labelSV
             // 
@@ -95,7 +97,8 @@
             this.comboBoxCloud.FormattingEnabled = true;
             this.comboBoxCloud.Items.AddRange(new object[] {
             "Based ",
-            "Enabled"});
+            "Enabled",
+            "1"});
             this.comboBoxCloud.Location = new System.Drawing.Point(488, 71);
             this.comboBoxCloud.Name = "comboBoxCloud";
             this.comboBoxCloud.Size = new System.Drawing.Size(121, 24);
@@ -103,11 +106,22 @@
             this.comboBoxCloud.Text = "Cloud Type";
             this.comboBoxCloud.SelectedIndexChanged += new System.EventHandler(this.comboBoxCloud_SelectedIndexChanged);
             // 
+            // buttonRefresh
+            // 
+            this.buttonRefresh.Location = new System.Drawing.Point(743, 70);
+            this.buttonRefresh.Name = "buttonRefresh";
+            this.buttonRefresh.Size = new System.Drawing.Size(75, 23);
+            this.buttonRefresh.TabIndex = 6;
+            this.buttonRefresh.Text = "Refresh";
+            this.buttonRefresh.UseVisualStyleBackColor = true;
+            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
+            // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 541);
+            this.Controls.Add(this.buttonRefresh);
             this.Controls.Add(this.comboBoxCloud);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.comboBoxType);
@@ -132,6 +146,7 @@
         private System.Windows.Forms.ComboBox comboBoxType;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.ComboBox comboBoxCloud;
+        private System.Windows.Forms.Button buttonRefresh;
     }
 }
 
