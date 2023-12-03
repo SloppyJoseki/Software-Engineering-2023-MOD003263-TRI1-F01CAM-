@@ -13,11 +13,13 @@ namespace LoginInterface
         private LoggedInAs() { }
         public string CurrentUserEmail
         {
+            // The email of whoever is logged in is an attribute
             get;
             set;
         }
         public static LoggedInAs GetInstanceOfLoggedInAs()
         {
+            // Lets an instance of the class be called to get information
             if (_instance == null)
             {
                 _instance = new LoggedInAs();

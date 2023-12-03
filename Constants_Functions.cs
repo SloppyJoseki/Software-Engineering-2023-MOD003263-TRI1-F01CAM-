@@ -40,6 +40,9 @@ namespace LoginInterface
 
         // This query is for updating the Log file saved in the UserData table
         public static string SaveLogFileQuery = "UPDATE UserData SET File_Data = @fileData WHERE Email COLLATE Latin1_General_CS_AS = @Email";
+        
+        // This query is for opening a file saved in the database
+        public static string fileOpenQuery = "SELECT File_Name, File_Data, File_Extension FROM Files WHERE Id = @id";
         public static string LogFilePath
         {
             // Allows the log file to be named after the specific user that is logged in 
@@ -79,8 +82,9 @@ namespace LoginInterface
                     }
                 }
             }
-            
+            // Close the brackets
             logMessage.Append(")");
+            // Add the date and time
             logMessage.Append(" " + formattedDateTime);
  
             return logMessage.ToString();

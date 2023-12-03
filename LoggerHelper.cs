@@ -12,6 +12,7 @@ namespace LoginInterface
         private static LoggerBase logger = null;
         public static void Log(Constants_Functions.LogEndpoint logEndpoint, string message)
         {
+            // Lets the user specify if the log message should end up in the DB or in the local file
             switch (logEndpoint)
             {
                 case Constants_Functions.LogEndpoint.File:

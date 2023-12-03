@@ -272,3 +272,21 @@ CheckUserPassword (themadic33@gmail.com, Return true) 2023-12-03 16:08:36
 GetInstanceOfLoggedInAs () 2023-12-03 16:08:36
 LoginButton_Click (UsernameBox.Text: themadic33@gmail.com) 2023-12-03 16:08:36
 GetInstanceOfDBConnector () 2023-12-03 16:08:36
+GetInstanceOfDBConnector () 2023-12-03 16:20:25
+GetObserverList () 2023-12-03 16:20:26
+GetInstanceOfDBConnector () 2023-12-03 16:20:34
+CheckEmailGetSalt (themadic33@gmail.com) 2023-12-03 16:20:34
+GetInstanceOfDBConnector () 2023-12-03 16:20:34
+HashPassword (System.Byte[]) 2023-12-03 16:20:34
+CheckUserPassword (themadic33@gmail.com, Return true) 2023-12-03 16:20:34
+GetInstanceOfLoggedInAs () 2023-12-03 16:20:34
+LoginButton_Click (UsernameBox.Text: themadic33@gmail.com) 2023-12-03 16:20:34
+GetInstanceOfDBConnector () 2023-12-03 16:20:43
+GetInstanceOfDBConnector () 2023-12-03 16:20:45
+GetInstanceOfDBConnector () 2023-12-03 16:20:49
+GetInstanceOfDBConnector () 2023-12-03 16:20:49
+GetInstanceOfDBConnector () 2023-12-03 16:20:49
+GetInstanceOfDBConnector () 2023-12-03 16:20:49
+GetInstanceOfDBConnector () 2023-12-03 16:20:50
+GetInstanceOfDBConnector () 2023-12-03 16:20:51
+GetInstanceOfDBConnector () 2023-12-03 16:20:51

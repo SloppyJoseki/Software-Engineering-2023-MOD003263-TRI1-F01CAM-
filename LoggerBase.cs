@@ -15,18 +15,12 @@ namespace LoginInterface
     }
     public class FileLogger : LoggerBase
     {
+        // Sets the location the logger will save data to
         public string filePath = Constants_Functions.LogFilePath;
-
-        internal Constants_Functions Constants_Functions
-        {
-            get => default;
-            set
-            {
-            }
-        }
 
         public override void Log(string message)
         {
+            // Overrides the base log function
             using (StreamWriter streamWriter = new StreamWriter(filePath, true))
             {
                 streamWriter.WriteLine(message);
@@ -35,9 +29,8 @@ namespace LoginInterface
     }
     public class DBLogger : LoggerBase
     {
-        // This needs to be all fixed and have a table created to save the data properly
+        // Overrides the log function and saves it to the DB not in use for this program
         readonly string filePath = Constants_Functions.LogFilePath;
-        readonly string email = LoggedInAs.GetInstanceOfLoggedInAs().CurrentUserEmail;
         public override void Log(string message)
         {
             DbConnector.GetInstanceOfDBConnector().SaveFile(filePath);

@@ -14,15 +14,8 @@ namespace LoginInterface
         readonly private string userEmail;
         public DbObserver(string email)
         {
+            // Sets the email for the observer when it is created
             userEmail = email;
-        }
-
-        internal IDbObserver IDbObserver
-        {
-            get => default;
-            set
-            {
-            }
         }
 
         public void Update(string message)

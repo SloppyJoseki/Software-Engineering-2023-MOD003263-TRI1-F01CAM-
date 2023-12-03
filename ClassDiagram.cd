@@ -17,7 +17,7 @@
       </Enum>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>CAAAAAAAAAAEAAAACAAEAAAIAAAAAAAkAQQACEAAAAA=</HashCode>
+      <HashCode>CAAAAAAAAAAEAAAACAAEAAAIAAAAAAAkAQQACEAAgAA=</HashCode>
       <FileName>Constants_Functions.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -30,21 +30,10 @@
   </Class>
   <Class Name="LoginInterface.DbConnector" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="8" Y="3.5" Width="2" />
-    <AssociationLine Name="Implements" Type="LoginInterface.IDBConnector">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.06" Y="0.287" />
-      </MemberNameLabel>
-    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAMAAAACAABAAwAEAABAAAAAABwAUAKBgGKAACACAA=</HashCode>
+      <HashCode>AAAMAAAACAABAAgAEAAAAAAAAABwAUACBgGKAACAAAA=</HashCode>
       <FileName>DBConnector.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Implements" />
-      <Property Name="Constants_Functions" />
-      <Property Name="Reads" />
-      <Property Name="DbObserver" />
-    </ShowAsAssociation>
     <Lollipop Position="0.1" Collapsed="true" />
   </Class>
   <Class Name="LoginInterface.DBExcludingUsersDataSet" Collapsed="true">
@@ -226,12 +215,9 @@
   <Class Name="LoginInterface.DbObserver" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="5.75" Y="2" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
       <FileName>DbObserver.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="IDbObserver" />
-    </ShowAsAssociation>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="LoginInterface.EditForm" Collapsed="true">
@@ -272,17 +258,14 @@
   <Class Name="LoginInterface.FileLogger" Collapsed="true">
     <Position X="3" Y="1.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAAgAAEAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>LoggerBase.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Constants_Functions" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="LoginInterface.DBLogger" Collapsed="true">
     <Position X="1" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAgAAEAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAgAAEAAAAAAAAAAAAA=</HashCode>
       <FileName>LoggerBase.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -319,18 +302,10 @@
   </Class>
   <Class Name="LoginInterface.UserRegistrationManager" Collapsed="true">
     <Position X="14.25" Y="0.5" Width="2.25" />
-    <AssociationLine Name="DbConnector" Type="LoginInterface.DbConnector">
-      <MemberNameLabel ManuallyPlaced="true">
-        <Position X="0.11" Y="-0.294" />
-      </MemberNameLabel>
-    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAgAAAAAAAAAAAAAAAAgAAAAAQAAAAAAAAAAAAAAQ=</HashCode>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>UserRegistrationManager.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="DbConnector" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="SearchFeature.SearchForm" Collapsed="true">
     <Position X="6" Y="7.75" Width="1.5" />

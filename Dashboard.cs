@@ -20,6 +20,7 @@ namespace LoginInterface
 
         private void EditDbButton_Click(object sender, EventArgs e)
         {
+            // Take the user to the EditForm
             EditForm form_edit = new EditForm();
 
             form_edit.Show();
@@ -37,12 +38,14 @@ namespace LoginInterface
 
         private void ViewFilesButton_Click(object sender, EventArgs e)
         {
+            // Take the user to the FilesForm
             new FilesForm().Show();
             this.Hide();
         }
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
+            // Take the user to the SearchForm
             new SearchForm().Show();
             this.Hide();
         }
