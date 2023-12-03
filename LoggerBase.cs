@@ -17,6 +17,14 @@ namespace LoginInterface
     {
         public string filePath = Constants_Functions.LogFilePath;
 
+        internal Constants_Functions Constants_Functions
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public override void Log(string message)
         {
             using (StreamWriter streamWriter = new StreamWriter(filePath, true))

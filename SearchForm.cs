@@ -46,14 +46,6 @@ namespace SearchFeature
 
         }
 
-
-
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void buttonSearch_Click(object sender, EventArgs e)
         {
 
@@ -86,7 +78,6 @@ namespace SearchFeature
             }
 
         }
-
 
         private void SearchForm_Load_1(object sender, EventArgs e)
         {

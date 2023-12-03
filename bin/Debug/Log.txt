@@ -186,3 +186,89 @@ CheckUserPassword (themadic33@gmail.com, Return true) 2023-11-30 14:20:45
 GetInstanceOfLoggedInAs () 2023-11-30 14:20:45
 LoginButton_Click (UsernameBox.Text: themadic33@gmail.com) 2023-11-30 14:20:45
 GetInstanceOfDBConnector () 2023-11-30 14:20:46
+GetInstanceOfDBConnector () 2023-12-03 15:32:53
+GetObserverList () 2023-12-03 15:32:54
+GetInstanceOfDBConnector () 2023-12-03 15:33:02
+CheckEmailGetSalt (themadic33@gmail.com) 2023-12-03 15:33:02
+GetInstanceOfDBConnector () 2023-12-03 15:33:02
+HashPassword (System.Byte[]) 2023-12-03 15:33:02
+CheckUserPassword (themadic33@gmail.com, Return true) 2023-12-03 15:33:04
+GetInstanceOfLoggedInAs () 2023-12-03 15:33:04
+LoginButton_Click (UsernameBox.Text: themadic33@gmail.com) 2023-12-03 15:33:04
+GetInstanceOfDBConnector () 2023-12-03 15:33:11
+DisplayFileData () 2023-12-03 15:33:11
+GetInstanceOfDBConnector () 2023-12-03 15:33:17
+GetInstanceOfDBConnector () 2023-12-03 15:41:28
+GetObserverList () 2023-12-03 15:41:29
+CreateAccount_Click () 2023-12-03 15:43:41
+GenerateRegistrationCode (933840) 2023-12-03 15:45:39
+GetInstanceOfDBConnector () 2023-12-03 15:45:39
+IsEmailTaken (not an email , False) 2023-12-03 15:45:39
+SendRegistrationCodeEmail (ThisIsForMyUniProject@gmail.com, 933840, email not sent) 2023-12-03 15:47:12
+GenerateRegistrationCode (478522) 2023-12-03 15:47:32
+GetInstanceOfDBConnector () 2023-12-03 15:47:32
+IsEmailTaken (hg419@student.aru.ac.uk, False) 2023-12-03 15:47:32
+SendRegistrationCodeEmail (ThisIsForMyUniProject@gmail.com, 478522, email sent) 2023-12-03 15:47:34
+GetInstanceOfDBConnector () 2023-12-03 15:50:27
+GenerateSalt (System.Byte[]) 2023-12-03 15:50:27
+HashPassword (System.Byte[]) 2023-12-03 15:50:27
+AddUserToDB (hg419@student.aru.ac.uk, System.Byte[]) 2023-12-03 15:50:29
+GetInstanceOfDBConnector () 2023-12-03 15:50:29
+GetObserverList () 2023-12-03 15:50:29
+GetInstanceOfDBConnector () 2023-12-03 15:50:56
+CheckEmailGetSalt (hg419@student.aru.ac.uk) 2023-12-03 15:50:56
+GetInstanceOfDBConnector () 2023-12-03 15:50:56
+HashPassword (System.Byte[]) 2023-12-03 15:50:56
+CheckUserPassword (hg419@student.aru.ac.uk, Return true) 2023-12-03 15:51:38
+GetInstanceOfLoggedInAs () 2023-12-03 15:51:38
+LoginButton_Click (UsernameBox.Text: hg419@student.aru.ac.uk) 2023-12-03 15:51:38
+GetInstanceOfDBConnector () 2023-12-03 15:53:24
+GetObserverList () 2023-12-03 15:53:26
+CreateAccount_Click () 2023-12-03 15:53:29
+GenerateRegistrationCode (287559) 2023-12-03 15:53:43
+GetInstanceOfDBConnector () 2023-12-03 15:53:43
+IsEmailTaken (hg419@student.aru.ac.uk, True) 2023-12-03 15:53:43
+SendRegistrationCodeEmail (hg419@student.aru.ac.uk, 287559) 2023-12-03 15:54:11
+GenerateRegistrationCode (473418) 2023-12-03 15:54:19
+GetInstanceOfDBConnector () 2023-12-03 15:54:19
+IsEmailTaken (themadic33@gmail.com, True) 2023-12-03 15:54:19
+SendRegistrationCodeEmail (themadic33@gmail.com, 473418) 2023-12-03 15:54:33
+GetInstanceOfDBConnector () 2023-12-03 15:58:43
+GetObserverList () 2023-12-03 15:58:44
+GetInstanceOfDBConnector () 2023-12-03 15:58:52
+CheckEmailGetSalt (themadic33@gmail.com) 2023-12-03 15:58:52
+GetInstanceOfDBConnector () 2023-12-03 15:58:52
+HashPassword (System.Byte[]) 2023-12-03 15:58:52
+CheckUserPassword (themadic33@gmail.com, Return true) 2023-12-03 15:58:53
+GetInstanceOfLoggedInAs () 2023-12-03 15:58:53
+LoginButton_Click (UsernameBox.Text: themadic33@gmail.com) 2023-12-03 15:58:53
+GetInstanceOfDBConnector () 2023-12-03 16:01:16
+GetObserverList () 2023-12-03 16:01:17
+GetInstanceOfDBConnector () 2023-12-03 16:01:23
+CheckEmailGetSalt (themadic33@gmail.com) 2023-12-03 16:01:23
+GetInstanceOfDBConnector () 2023-12-03 16:01:23
+HashPassword (System.Byte[]) 2023-12-03 16:01:23
+CheckUserPassword (themadic33@gmail.com, Return true) 2023-12-03 16:01:23
+GetInstanceOfLoggedInAs () 2023-12-03 16:01:23
+LoginButton_Click (UsernameBox.Text: themadic33@gmail.com) 2023-12-03 16:01:23
+GetInstanceOfDBConnector () 2023-12-03 16:02:37
+GetObserverList () 2023-12-03 16:02:37
+GetInstanceOfDBConnector () 2023-12-03 16:02:43
+CheckEmailGetSalt (themadic33@gmail.com) 2023-12-03 16:02:43
+GetInstanceOfDBConnector () 2023-12-03 16:02:43
+HashPassword (System.Byte[]) 2023-12-03 16:02:43
+CheckUserPassword (themadic33@gmail.com, Return true) 2023-12-03 16:02:43
+GetInstanceOfLoggedInAs () 2023-12-03 16:02:43
+LoginButton_Click (UsernameBox.Text: themadic33@gmail.com) 2023-12-03 16:02:43
+GetInstanceOfDBConnector () 2023-12-03 16:02:47
+GetInstanceOfDBConnector () 2023-12-03 16:02:57
+GetInstanceOfDBConnector () 2023-12-03 16:08:27
+GetObserverList () 2023-12-03 16:08:27
+GetInstanceOfDBConnector () 2023-12-03 16:08:36
+CheckEmailGetSalt (themadic33@gmail.com) 2023-12-03 16:08:36
+GetInstanceOfDBConnector () 2023-12-03 16:08:36
+HashPassword (System.Byte[]) 2023-12-03 16:08:36
+CheckUserPassword (themadic33@gmail.com, Return true) 2023-12-03 16:08:36
+GetInstanceOfLoggedInAs () 2023-12-03 16:08:36
+LoginButton_Click (UsernameBox.Text: themadic33@gmail.com) 2023-12-03 16:08:36
+GetInstanceOfDBConnector () 2023-12-03 16:08:36

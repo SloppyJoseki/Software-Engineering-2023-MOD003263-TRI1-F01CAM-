@@ -12,7 +12,7 @@ namespace LoginInterface
 {
     internal class UserRegistrationManager
     {
-        public LoginForm LoginForm
+        internal DbConnector DbConnector
         {
             get => default;
             set

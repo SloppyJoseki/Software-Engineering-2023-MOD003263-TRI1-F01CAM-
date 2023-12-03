@@ -168,6 +168,7 @@
     <EmbeddedResource Include="updateDB.resx">
       <DependentUpon>updateDB.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram.cd" />
     <None Include="DBExcludingUsersDataSet.xsc">
       <DependentUpon>DBExcludingUsersDataSet.xsd</DependentUpon>
     </None>

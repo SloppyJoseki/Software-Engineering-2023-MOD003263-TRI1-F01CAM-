@@ -55,7 +55,6 @@
             this.label1.Size = new System.Drawing.Size(135, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Datadase editing tool";
-            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // panel1
             // 
@@ -108,7 +107,6 @@
             this.ViewSoftwareButton.TabIndex = 3;
             this.ViewSoftwareButton.Text = "View Software";
             this.ViewSoftwareButton.UseVisualStyleBackColor = true;
-            this.ViewSoftwareButton.Click += new System.EventHandler(this.Button2_Click);
             // 
             // ViewCompanyButton
             // 

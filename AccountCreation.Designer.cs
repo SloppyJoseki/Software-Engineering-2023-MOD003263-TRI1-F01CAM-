@@ -60,7 +60,6 @@
             this.EmailLabel.Size = new System.Drawing.Size(200, 16);
             this.EmailLabel.TabIndex = 2;
             this.EmailLabel.Text = "Please enter your desired email:";
-            this.EmailLabel.Click += new System.EventHandler(this.EmailLabel_Click);
             // 
             // PassLabel
             // 
@@ -106,7 +105,6 @@
             this.Name = "AccountCreation";
             this.Text = "AccountCreation";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AccountCreation_FormClosing);
-            this.Load += new System.EventHandler(this.AccountCreation_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

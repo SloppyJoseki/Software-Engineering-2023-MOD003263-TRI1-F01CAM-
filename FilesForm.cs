@@ -17,11 +17,6 @@ namespace LoginInterface
             InitializeComponent();
         }
 
-        private void FilesForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void FilesForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)

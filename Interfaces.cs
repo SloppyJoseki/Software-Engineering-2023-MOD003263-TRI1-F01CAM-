@@ -16,6 +16,7 @@ namespace LoginInterface
     // Interface for the db being observed
     internal interface IDBConnector
     {
+
         // Register an observer
         void AddDbObserver(IDbObserver observer);
 

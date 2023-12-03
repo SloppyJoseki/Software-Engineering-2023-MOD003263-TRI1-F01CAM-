@@ -26,11 +26,6 @@ namespace LoginInterface
             this.Hide();
         }
 
-        private void Dashboard_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void Dashboard_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.UserClosing)

@@ -40,7 +40,6 @@
             this.RegCodeBox.Name = "RegCodeBox";
             this.RegCodeBox.Size = new System.Drawing.Size(311, 22);
             this.RegCodeBox.TabIndex = 0;
-            this.RegCodeBox.TextChanged += new System.EventHandler(this.RegCodeBox_TextChanged);
             // 
             // RegCodeLabel
             // 
@@ -84,7 +83,6 @@
             this.Name = "RegistrationCodeForm";
             this.Text = "RegistrationCodeForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RegistrationCodeForm_FormClosing);
-            this.Load += new System.EventHandler(this.RegistrationCodeForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

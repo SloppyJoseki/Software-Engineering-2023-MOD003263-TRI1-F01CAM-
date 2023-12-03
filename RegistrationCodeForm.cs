@@ -52,15 +52,5 @@ namespace LoginInterface
             this.Hide();
             new LoginForm().Show();
         }
-
-        private void RegCodeBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RegistrationCodeForm_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

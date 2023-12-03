@@ -121,7 +121,6 @@
             this.Name = "FilesForm";
             this.Text = "FilesForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FilesForm_FormClosing);
-            this.Load += new System.EventHandler(this.FilesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DocumentViewer)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

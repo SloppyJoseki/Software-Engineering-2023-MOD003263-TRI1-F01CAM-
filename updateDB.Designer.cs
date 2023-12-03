@@ -89,7 +89,6 @@
             this.label1.Size = new System.Drawing.Size(59, 16);
             this.label1.TabIndex = 13;
             this.label1.Text = "Table ID";
-            this.label1.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // textBox0
             // 
@@ -187,7 +186,6 @@
             this.CompanyEstablishedLabel.Size = new System.Drawing.Size(139, 16);
             this.CompanyEstablishedLabel.TabIndex = 2;
             this.CompanyEstablishedLabel.Text = "Company Established";
-            this.CompanyEstablishedLabel.Click += new System.EventHandler(this.label3_Click);
             // 
             // CompanyWebsiteLabel
             // 
@@ -197,7 +195,6 @@
             this.CompanyWebsiteLabel.Size = new System.Drawing.Size(118, 16);
             this.CompanyWebsiteLabel.TabIndex = 1;
             this.CompanyWebsiteLabel.Text = "Company Website";
-            this.CompanyWebsiteLabel.Click += new System.EventHandler(this.label2_Click);
             // 
             // CompanyNameLabel
             // 
@@ -207,7 +204,6 @@
             this.CompanyNameLabel.Size = new System.Drawing.Size(105, 16);
             this.CompanyNameLabel.TabIndex = 0;
             this.CompanyNameLabel.Text = "Company Name";
-            this.CompanyNameLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // updateDB
             // 

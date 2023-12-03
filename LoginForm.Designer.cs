@@ -60,7 +60,6 @@
             this.EmailLabel.Size = new System.Drawing.Size(44, 16);
             this.EmailLabel.TabIndex = 2;
             this.EmailLabel.Text = "Email:";
-            this.EmailLabel.Click += new System.EventHandler(this.EmailLabel_Click);
             // 
             // PasswordLabel
             // 
@@ -70,7 +69,7 @@
             this.PasswordLabel.Size = new System.Drawing.Size(70, 16);
             this.PasswordLabel.TabIndex = 3;
             this.PasswordLabel.Text = "Password:";
-            this.PasswordLabel.Click += new System.EventHandler(this.PasswordLabel_Click);
+
             // 
             // LoginButton
             // 

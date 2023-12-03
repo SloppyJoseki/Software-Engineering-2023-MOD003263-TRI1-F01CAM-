@@ -29,6 +29,39 @@ namespace LoginInterface
         {
             connectionString = Properties.Settings.Default.DBExcludingUsersConnectionString;
         }
+
+        internal IDBConnector Implements
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        internal Constants_Functions Constants_Functions
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        public DBExcludingUsersDataSet Reads
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
+        internal DbObserver DbObserver
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public static DbConnector GetInstanceOfDBConnector()
         {
             if (_instance == null)

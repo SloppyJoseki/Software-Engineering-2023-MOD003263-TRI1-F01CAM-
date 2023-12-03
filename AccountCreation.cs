@@ -18,11 +18,6 @@ namespace LoginInterface
             CreateButton.Enabled = false;
         }
 
-        private void EmailLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void BackButton_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -47,11 +42,6 @@ namespace LoginInterface
                 this.Hide();
                 new RegistrationCodeForm(regCode, EmailBox.Text, PasswordBox.Text).Show();
             }        
-        }
-
-        private void AccountCreation_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void EmailBox_TextChanged(object sender, EventArgs e)

@@ -49,6 +49,7 @@ namespace LoginInterface
                 return "Log.txt";
             }
         }
+
         public static string LogInformation(params object[] args)
         {
             // Get the current date and time as a string

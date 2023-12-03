@@ -19,11 +19,6 @@ namespace LoginInterface
             LoginButton.Enabled = false;
         }
 
-        private void PasswordLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void PasswordBox_TextChanged(object sender, EventArgs e)
         {
             LoginButtonControl();
@@ -40,11 +35,6 @@ namespace LoginInterface
             Constants_Functions.LogInformation());
             this.Hide();
             new AccountCreation().Show();
-        }
-
-        private void EmailLabel_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void LoginButton_Click(object sender, EventArgs e)

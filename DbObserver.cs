@@ -17,6 +17,14 @@ namespace LoginInterface
             userEmail = email;
         }
 
+        internal IDbObserver IDbObserver
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         public void Update(string message)
         {
             // Will send an email to the user informing them of a db update
