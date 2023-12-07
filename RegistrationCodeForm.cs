@@ -28,7 +28,7 @@ namespace LoginInterface
         {
             // On click will take you back to the AccountCreation form
             this.Hide();
-            new AccountCreation().Show();
+            new AccountCreationForm().Show();
         }
 
         private void RegistrationCodeForm_FormClosing(object sender, FormClosingEventArgs e)

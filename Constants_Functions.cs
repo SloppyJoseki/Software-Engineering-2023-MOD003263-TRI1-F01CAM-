@@ -7,6 +7,7 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace LoginInterface
 {
@@ -98,6 +99,19 @@ namespace LoginInterface
                 LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
                 Constants_Functions.LogInformation(salt));
                 return pbkdf2.GetBytes(32);
+            }
+        }
+
+        public static void ButtonControl(string textbox1, string textbox2, Button button)
+        {
+            // If both text boxes contatain text then the button is enabled
+            if (!string.IsNullOrEmpty(textbox1) && !string.IsNullOrEmpty(textbox2))
+            {
+                button.Enabled = true;
+            }
+            else
+            {
+                button.Enabled = false;
             }
         }
     }

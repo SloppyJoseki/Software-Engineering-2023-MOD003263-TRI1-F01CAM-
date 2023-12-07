@@ -76,7 +76,6 @@ namespace SearchFeature
             {
                 Console.WriteLine("No data found");
             }
-
         }
 
         private void SearchForm_Load_1(object sender, EventArgs e)
@@ -146,6 +145,19 @@ namespace SearchFeature
             {
                 selectedrow = dataGridView1.Rows[e.RowIndex];
                 Form2.getform2.ShowDialog();
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        public Form2 Form2
+        {
+            get => default;
+            set
+            {
             }
         }
     }

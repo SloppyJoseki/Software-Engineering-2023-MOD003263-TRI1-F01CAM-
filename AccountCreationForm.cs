@@ -51,27 +51,13 @@ namespace LoginInterface
         private void EmailBox_TextChanged(object sender, EventArgs e)
         {
             // Check for text in the Email box
-            CreateButtonControl();
+            Constants_Functions.ButtonControl(PasswordBox.Text, EmailBox.Text, CreateButton);
         }
 
         private void PasswordBox_TextChanged(object sender, EventArgs e)
         {
             // Check for text in the Password box
-            CreateButtonControl();
-        }
-
-        public void CreateButtonControl()
-        {
-            // If there is text in both the Email and Password textboxes then the Create account button will
-            // become clickable
-            if (!string.IsNullOrEmpty(EmailBox.Text) && !string.IsNullOrEmpty(PasswordBox.Text))
-            {
-                CreateButton.Enabled = true;
-            }
-            else 
-            {
-                CreateButton.Enabled = false;
-            }
+            Constants_Functions.ButtonControl(PasswordBox.Text, EmailBox.Text, CreateButton);
         }
     }
 }

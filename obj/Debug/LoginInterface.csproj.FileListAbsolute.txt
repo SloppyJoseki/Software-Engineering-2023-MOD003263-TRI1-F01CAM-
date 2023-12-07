@@ -76,7 +76,6 @@ C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI
 C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-1\bin\Debug\LoginInterface.exe
 C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-1\bin\Debug\LoginInterface.pdb
 C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-1\obj\Debug\LoginInterface.csproj.AssemblyReference.cache
-C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-1\obj\Debug\LoginInterface.AccountCreation.resources
 C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-1\obj\Debug\LoginInterface.Dashboard.resources
 C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-1\obj\Debug\LoginInterface.EditForm.resources
 C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-1\obj\Debug\LoginInterface.FilesForm.resources
@@ -90,3 +89,4 @@ C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI
 C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-1\obj\Debug\LoginInterface.exe
 C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-1\obj\Debug\LoginInterface.pdb
 C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-1\obj\Debug\LoginInterface.Form2.resources
+C:\Users\Harry\Source\Repos\SloppyJoseki\Software-Engineering-2023-MOD003263-TRI1-F01CAM-1\obj\Debug\LoginInterface.AccountCreationForm.resources

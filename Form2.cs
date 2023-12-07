@@ -26,10 +26,10 @@ namespace LoginInterface
                 return frm;
             }
         }
-
         public Form2()
         {
             InitializeComponent();
+            this.Load += Form2_Load;
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -37,6 +37,18 @@ namespace LoginInterface
             textBoxSN.Text = SearchForm.selectedrow.Cells[0].Value.ToString();
             textBoxD.Text = SearchForm.selectedrow.Cells[1].Value.ToString();
             textBoxAI.Text = SearchForm.selectedrow.Cells[2].Value.ToString();
+            randomVendorsGen();
+        }
+
+        private void randomVendorsGen()
+        {
+            //Adjust the number based on how many random vendors you want, this case 3
+            string queryRV = "SELECT TOP 3 * FROM Software ORDER BY NEWID()";
+
+            DataSet randomVendorsDtst = DbConnector.GetInstanceOfDBConnector().getDataSet(queryRV);
+
+            dgvRV.DataSource = randomVendorsDtst.Tables[0];
+
         }
     }
 }

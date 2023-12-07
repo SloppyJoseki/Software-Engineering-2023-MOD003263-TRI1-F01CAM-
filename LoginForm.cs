@@ -23,13 +23,13 @@ namespace LoginInterface
         private void PasswordBox_TextChanged(object sender, EventArgs e)
         {
             // Checks for text in the Password box
-            LoginButtonControl();
+            Constants_Functions.ButtonControl(PasswordBox.Text, UsernameBox.Text, LoginButton);
         }
 
         private void UsernameBox_TextChanged(object sender, EventArgs e)
         {
             // Checks for text in the Email box
-            LoginButtonControl();
+            Constants_Functions.ButtonControl(PasswordBox.Text, UsernameBox.Text, LoginButton);
         }
 
         private void CreateAccount_Click(object sender, EventArgs e)
@@ -38,14 +38,15 @@ namespace LoginInterface
             LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
             Constants_Functions.LogInformation());
             this.Hide();
-            new AccountCreation().Show();
+            new AccountCreationForm().Show();
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
             // Checks if the user is able to login 
            byte[] userSalt = DbConnector.GetInstanceOfDBConnector().CheckEmailGetSalt(UsernameBox.Text);
-           bool isLogin = DbConnector.GetInstanceOfDBConnector().CheckUserPassword(UsernameBox.Text, PasswordBox.Text, userSalt);
+           bool isLogin = DbConnector.
+           GetInstanceOfDBConnector().CheckUserPassword(UsernameBox.Text, PasswordBox.Text, userSalt);
            // If they can then:
            if (isLogin)
            {
@@ -71,19 +72,6 @@ namespace LoginInterface
             {
                 // Ensure that the form is being closed by the user (not programmatically).
                 Application.Exit();
-            }
-        }
-
-        public void LoginButtonControl()
-        {
-            // Enables the login button only if text is in both the email and password boxes
-            if (!string.IsNullOrEmpty(UsernameBox.Text) && !string.IsNullOrEmpty(PasswordBox.Text))
-            {
-                LoginButton.Enabled = true;
-            }
-            else
-            {
-                LoginButton.Enabled = false;
             }
         }
     }  

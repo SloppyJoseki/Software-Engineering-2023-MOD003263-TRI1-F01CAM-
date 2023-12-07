@@ -38,7 +38,6 @@ namespace LoginInterface
         {
             // Saves any file the user wants so long as the text box contains the file path
             DbConnector.GetInstanceOfDBConnector().SaveFile(FilePathTextBox.Text);
-            MessageBox.Show("Saved");
         }
 
         private void ViewButton_Click(object sender, EventArgs e)

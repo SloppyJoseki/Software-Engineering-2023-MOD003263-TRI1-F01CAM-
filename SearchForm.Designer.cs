@@ -47,6 +47,7 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(877, 338);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick_1);
             // 
             // labelSV
@@ -72,8 +73,7 @@
             this.comboBoxType.FormattingEnabled = true;
             this.comboBoxType.Items.AddRange(new object[] {
             "Wealth Management",
-            "Ent Architecture",
-            "BP Management"});
+            "Ent Architecture"});
             this.comboBoxType.Location = new System.Drawing.Point(346, 71);
             this.comboBoxType.Name = "comboBoxType";
             this.comboBoxType.Size = new System.Drawing.Size(121, 24);
@@ -95,8 +95,7 @@
             // 
             this.comboBoxCloud.FormattingEnabled = true;
             this.comboBoxCloud.Items.AddRange(new object[] {
-            "Based ",
-            "Enabled",
+            "0",
             "1"});
             this.comboBoxCloud.Location = new System.Drawing.Point(488, 71);
             this.comboBoxCloud.Name = "comboBoxCloud";

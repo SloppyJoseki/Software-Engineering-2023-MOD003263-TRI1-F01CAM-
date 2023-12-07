@@ -84,7 +84,7 @@ namespace LoginInterface
                             AddDbObserver(new DbObserver(email));
                         }
                         LoggerHelper.Log(Constants_Functions.LogEndpoint.File, Constants_Functions.LogInformation());
-                    }                   
+                    }
                 }
             }
         }
@@ -108,7 +108,7 @@ namespace LoginInterface
                 {
                     // Adds the email in as a paramater
                     sqlCommand.Parameters.Add(new SqlParameter("@Email", email));
-                    
+
                     // Reads the data
                     using (SqlDataReader reader = sqlCommand.ExecuteReader())
                     {
@@ -126,7 +126,7 @@ namespace LoginInterface
                             Constants_Functions.LogInformation(email));
                             return userSalt;
                         }
-                    }   
+                    }
                 }
             }
             catch (Exception ex)
@@ -182,7 +182,7 @@ namespace LoginInterface
                         else
                         {
                             // Reader not able to read password must be wrong
-                            MessageBox.Show("Password wrong soz");
+                            MessageBox.Show("Reader unable to read speak to someone");
                             LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
                             Constants_Functions.LogInformation(email, "error"));
                             return false;
@@ -232,7 +232,7 @@ namespace LoginInterface
 
         }
         public void AddUserToDB(string email, string password)
-        {   
+        {
             // Adds a user into the DB
             SqlConnection connection = new SqlConnection(connectionString);
             UserRegistrationManager userRegistrationManager = new UserRegistrationManager();
@@ -273,6 +273,11 @@ namespace LoginInterface
         }
         public void SaveFile(string filePath)
         {
+            if (string.IsNullOrEmpty(filePath))
+            {
+                MessageBox.Show("Please enter a valid file path");
+                return;
+            }
             // Lets the user save a file into the DB
             using (Stream stream = File.OpenRead(filePath))
             {
@@ -286,7 +291,7 @@ namespace LoginInterface
 
                 SqlConnection connection = new SqlConnection(connectionString);
                 try
-                { 
+                {
                     // Opens the connection then adds all the paramaters
                     connection.Open();
                     using (SqlCommand sqlCommand = new SqlCommand(FileQuery, connection))
@@ -302,6 +307,7 @@ namespace LoginInterface
                         NotifyDbObservers(fileSavedNotification);
                         LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
                         Constants_Functions.LogInformation(filePath));
+                        MessageBox.Show("Saved");
                     }
 
                 }
@@ -499,79 +505,79 @@ namespace LoginInterface
             return schema.Tables[0].Columns.Cast<DataColumn>().Select(c => c.ColumnName).ToArray();
         }
 
-        public DataSet SearchAndFiltering(string searchText)
-        {
-            //Construct base SQL query
-            string query = "SELECT * FROM Software WHERE ";
+         public DataSet SearchAndFiltering(string searchText)
+         {
+             //Construct base SQL query
+             string query = "SELECT * FROM Software WHERE ";
 
-            //GetColumnNames method to retrieve column names
-            string[] columnNames = GetColumnNames();
+             //GetColumnNames method to retrieve column names
+             string[] columnNames = GetColumnNames();
 
-            //Append conditions for each column in Where clause
-            for (int i = 0; i < columnNames.Length; i++)
-            {
-                if (i > 0)
-                {
-                    query += " OR ";
-                }
-                query += $"CONVERT(NVARCHAR(MAX), [{columnNames[i]}]) LIKE @searchText";
-            }
+             //Append conditions for each column in Where clause
+             for (int i = 0; i < columnNames.Length; i++)
+             {
+                 if (i > 0)
+                 {
+                     query += " OR ";
+                 }
+                 query += $"CONVERT(NVARCHAR(MAX), [{columnNames[i]}]) LIKE @searchText";
+             }
 
-            //Create param for searchtext
-            SqlParameter parameter = new SqlParameter("@searchText", searchText);
+             //Create param for searchtext
+             SqlParameter parameter = new SqlParameter("@searchText", searchText);
 
 
-            try
-            {
-                //Initialize dataset to store filtered data
-                DataSet filteredData = new DataSet();
-                try
-                {
-                    //Connect to database w sqlconnection
-                    using (SqlConnection connection = new SqlConnection(connectionString))
-                    {
-                        connection.Open();
+             try
+             {
+                 //Initialize dataset to store filtered data
+                 DataSet filteredData = new DataSet();
+                 try
+                 {
+                     //Connect to database w sqlconnection
+                     using (SqlConnection connection = new SqlConnection(connectionString))
+                     {
+                         connection.Open();
 
-                        //sqlcmd execute query
-                        using (SqlCommand command = new SqlCommand(query, connection))
-                        {
-                            //Add searchtxt param to cmd
-                            command.Parameters.Add(new SqlParameter("@searchText", searchText));
+                         //sqlcmd execute query
+                         using (SqlCommand command = new SqlCommand(query, connection))
+                         {
+                             //Add searchtxt param to cmd
+                             command.Parameters.Add(new SqlParameter("@searchText", searchText));
 
-                            //Use sqldataadapter to fill datatable w results
-                            using (SqlDataAdapter adapter = new SqlDataAdapter(command))
-                            {
-                                //Fill datatable with the results
-                                adapter.Fill(filteredData);
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    //Handle exceptions
-                    MessageBox.Show(ex.Message);
-                    return null;
-                }
+                             //Use sqldataadapter to fill datatable w results
+                             using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                             {
+                                 //Fill datatable with the results
+                                 adapter.Fill(filteredData);
+                             }
+                         }
+                     }
+                 }
+                 catch (Exception ex)
+                 {
+                     //Handle exceptions
+                     MessageBox.Show(ex.Message);
+                     return null;
+                 }
 
-                if (filteredData != null && filteredData.Tables.Count > 0)
-                {
-                    //Return filtered data
-                    return filteredData;
-                }
-                else
-                {
-                    // No matching data found
-                    Console.WriteLine($"No matching data found for search: {searchText}");
-                    return null;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return null;
-            }
-        }
+                 if (filteredData != null && filteredData.Tables.Count > 0)
+                 {
+                     //Return filtered data
+                     return filteredData;
+                 }
+                 else
+                 {
+                     // No matching data found
+                     Console.WriteLine($"No matching data found for search: {searchText}");
+                     return null;
+                 }
+             }
+             catch (Exception ex)
+             {
+                 MessageBox.Show(ex.Message);
+                 return null;
+             }
+         }
     }
 }
 
