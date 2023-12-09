@@ -182,7 +182,7 @@ namespace LoginInterface
                         else
                         {
                             // Reader not able to read password must be wrong
-                            MessageBox.Show("Reader unable to read speak to someone");
+                            MessageBox.Show("Email wrong so password can't be checked");
                             LoggerHelper.Log(Constants_Functions.LogEndpoint.File,
                             Constants_Functions.LogInformation(email, "error"));
                             return false;
@@ -276,6 +276,11 @@ namespace LoginInterface
             if (string.IsNullOrEmpty(filePath))
             {
                 MessageBox.Show("Please enter a valid file path");
+                return;
+            }
+            if (!File.Exists(filePath))
+            {
+                MessageBox.Show("The specified file does not exist");
                 return;
             }
             // Lets the user save a file into the DB
