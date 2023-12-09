@@ -46,10 +46,8 @@ namespace LoginInterface
         public static string fileOpenQuery = "SELECT File_Name, File_Data, File_Extension FROM Files WHERE Id = @id";
         public static string LogFilePath
         {
-            // Allows the log file to be named after the specific user that is logged in 
             get
             {
-                // return LoggedInAs.GetInstanceOfLoggedInAs().currentUserEmail + ".txt";
                 return "Log.txt";
             }
         }
