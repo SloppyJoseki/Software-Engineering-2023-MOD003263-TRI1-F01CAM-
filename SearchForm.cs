@@ -130,15 +130,6 @@ namespace SearchFeature
 
         public static DataGridViewRow selectedrow;
 
-        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                selectedrow = dataGridView1.Rows[e.RowIndex];
-                Form2.getform2.ShowDialog();
-            }
-        }
-
         private void dataGridView1_CellMouseClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -147,18 +138,10 @@ namespace SearchFeature
                 Form2.getform2.ShowDialog();
             }
         }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void HomeButton_Click(object sender, EventArgs e)
         {
-
-        }
-
-        public Form2 Form2
-        {
-            get => default;
-            set
-            {
-            }
+            new Dashboard().Show();
+            this.Hide();
         }
     }
 }

@@ -1603,3 +1603,48 @@ HashPassword (System.Byte[]) 2023-12-09 22:35:55
 CheckUserPassword (harygiddens@gmail.com, Return true) 2023-12-09 22:35:56
 GetInstanceOfLoggedInAs () 2023-12-09 22:35:56
 LoginButton_Click (UsernameBox.Text: harygiddens@gmail.com) 2023-12-09 22:35:56
+GetInstanceOfDBConnector () 2023-12-10 17:05:43
+AddDbObserver () 2023-12-10 17:05:45
+GetObserverList () 2023-12-10 17:05:45
+GetInstanceOfDBConnector () 2023-12-10 17:05:51
+CheckEmailGetSalt (themadic33@gmail.com) 2023-12-10 17:05:51
+GetInstanceOfDBConnector () 2023-12-10 17:05:51
+HashPassword (System.Byte[]) 2023-12-10 17:05:51
+CheckUserPassword (themadic33@gmail.com, Return true) 2023-12-10 17:05:52
+GetInstanceOfLoggedInAs () 2023-12-10 17:05:52
+LoginButton_Click (UsernameBox.Text: themadic33@gmail.com) 2023-12-10 17:05:52
+GetInstanceOfDBConnector () 2023-12-10 17:05:55
+DisplayFileData () 2023-12-10 17:05:55
+GetInstanceOfDBConnector () 2023-12-10 17:06:00
+GetInstanceOfDBConnector () 2023-12-10 17:12:23
+AddDbObserver () 2023-12-10 17:12:26
+GetObserverList () 2023-12-10 17:12:26
+GetInstanceOfDBConnector () 2023-12-10 17:12:33
+CheckEmailGetSalt (themadic33@gmail.com) 2023-12-10 17:12:33
+GetInstanceOfDBConnector () 2023-12-10 17:12:33
+HashPassword (System.Byte[]) 2023-12-10 17:12:33
+CheckUserPassword (themadic33@gmail.com, Return true) 2023-12-10 17:12:33
+GetInstanceOfLoggedInAs () 2023-12-10 17:12:33
+LoginButton_Click (UsernameBox.Text: themadic33@gmail.com) 2023-12-10 17:12:33
+GetInstanceOfDBConnector () 2023-12-10 17:12:34
+GetInstanceOfDBConnector () 2023-12-10 17:12:38
+GetInstanceOfDBConnector () 2023-12-10 17:12:40
+GetInstanceOfDBConnector () 2023-12-10 17:12:40
+GetInstanceOfDBConnector () 2023-12-10 17:12:40
+GetInstanceOfDBConnector () 2023-12-10 17:12:40
+GetInstanceOfDBConnector () 2023-12-10 17:12:40
+GetInstanceOfDBConnector () 2023-12-10 17:12:40
+GetInstanceOfDBConnector () 2023-12-10 17:12:41
+GetInstanceOfDBConnector () 2023-12-10 17:12:41
+GetInstanceOfDBConnector () 2023-12-10 17:12:41
+GetInstanceOfDBConnector () 2023-12-10 17:12:41
+GetInstanceOfDBConnector () 2023-12-10 17:12:41
+GetInstanceOfDBConnector () 2023-12-10 17:12:43
+GetInstanceOfDBConnector () 2023-12-10 17:12:43
+GetInstanceOfDBConnector () 2023-12-10 17:12:44
+GetInstanceOfDBConnector () 2023-12-10 17:12:44
+GetInstanceOfDBConnector () 2023-12-10 17:12:44
+GetInstanceOfDBConnector () 2023-12-10 17:12:51
+GetInstanceOfDBConnector () 2023-12-10 17:12:51
+GetInstanceOfDBConnector () 2023-12-10 17:12:57
+GetInstanceOfDBConnector () 2023-12-10 17:12:57

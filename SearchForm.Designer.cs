@@ -35,6 +35,7 @@
             this.buttonSearch = new System.Windows.Forms.Button();
             this.comboBoxCloud = new System.Windows.Forms.ComboBox();
             this.buttonRefresh = new System.Windows.Forms.Button();
+            this.HomeButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +48,6 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(877, 338);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseClick_1);
             // 
             // labelSV
@@ -114,11 +114,22 @@
             this.buttonRefresh.UseVisualStyleBackColor = true;
             this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
             // 
+            // HomeButton
+            // 
+            this.HomeButton.Location = new System.Drawing.Point(828, 13);
+            this.HomeButton.Name = "HomeButton";
+            this.HomeButton.Size = new System.Drawing.Size(75, 23);
+            this.HomeButton.TabIndex = 7;
+            this.HomeButton.Text = "Home";
+            this.HomeButton.UseVisualStyleBackColor = true;
+            this.HomeButton.Click += new System.EventHandler(this.HomeButton_Click);
+            // 
             // SearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(931, 541);
+            this.Controls.Add(this.HomeButton);
             this.Controls.Add(this.buttonRefresh);
             this.Controls.Add(this.comboBoxCloud);
             this.Controls.Add(this.buttonSearch);
@@ -145,6 +156,7 @@
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.ComboBox comboBoxCloud;
         private System.Windows.Forms.Button buttonRefresh;
+        private System.Windows.Forms.Button HomeButton;
     }
 }
 
